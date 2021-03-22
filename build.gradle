@@ -1,0 +1,31 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.3.RELEASE'
+	id 'java'
+	id "org.sonarqube" version "3.1.1"
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.eci.ieti'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "X-Viss_IETI---PROJECT-BACKEND"
+		property "sonar.organization", "x-viss"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
+}
+
+dependencies {
+	implementation('io.jsonwebtoken:jjwt:0.6.0')
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
+	implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
+}
