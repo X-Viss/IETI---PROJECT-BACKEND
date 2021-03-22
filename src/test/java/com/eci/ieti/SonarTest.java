@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.junit.Test;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Sonar {
+public class SonarTest {
 
     @Test
     public void contextLoads() {
