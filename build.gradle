@@ -44,10 +44,10 @@ jacocoTestReport {
 sonarqube {
 	properties {
 		property "sonar.host.url", "https://sonarcloud.io"
-		property "sonar.projectKey","X-VISS"
+		property "sonar.projectKey", "X-Viss_IETI---PROJECT-BACKEND"
+		property "sonar.organization", "x-viss"
 		property "sonar.projectName", "X-VISS-BACKEND"
 		property "sonar.java.source", "1.8"
-		property "sonar.organization", "X-VISS"
 		property "sonar.java.coveragePlugin", "jacoco"
 		property "sonar.tests", "src/test"
 		property "sonar.java.test.binaries", "build/classes/java/test"
