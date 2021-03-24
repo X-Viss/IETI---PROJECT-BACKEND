@@ -1,8 +1,8 @@
 name: Build
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #  branches:
+  #    - master
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -30,7 +30,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Build and analyze
+        run: ./gradlew build sonarqube --info
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew build sonarqube --info
