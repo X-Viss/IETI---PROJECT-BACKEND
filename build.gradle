@@ -55,7 +55,7 @@ sonarqube {
 	}
 }
 
-tasks.sonarqube.dependsOn(jacocoTestReport)
+
 
 dependencies {
 	implementation('io.jsonwebtoken:jjwt:0.6.0')
@@ -66,3 +66,5 @@ dependencies {
 	implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
 	implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
 }
+
+tasks.sonarqube.dependsOn(jacocoTestReport)
