@@ -36,7 +36,7 @@ jacocoTestReport {
 	}
 	afterEvaluate {
 		getClassDirectories().setFrom(classDirectories.files.collect {
-			fileTree(dir: it, exclude: ['**/com/eci/ieti/SpringBootApplication**'])
+			fileTree(dir: it, exclude: ['**/com/eci/ieti/BagTravBackendApp**'])
 		})
 	}
 }
