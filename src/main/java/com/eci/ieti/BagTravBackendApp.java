@@ -20,7 +20,6 @@ public class BagTravBackendApp implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//createUser();
 		getNameUser();
 	}
 
@@ -30,7 +29,6 @@ public class BagTravBackendApp implements CommandLineRunner {
 	}
 
 	public void getNameUser() {
-		User var = customRepository.getName("luisa");
-		System.out.println(var.getpassword());
+		customRepository.getName("luisa");
 	}
 }
