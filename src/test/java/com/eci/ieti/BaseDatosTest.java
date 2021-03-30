@@ -36,8 +36,8 @@ public class BaseDatosTest {
     public void createUser(){
         User user = new User();
         user.setUserName("Prueba2");
-        user.setpassword("456");
-        assertEquals("456", user.getpassword());
+        user.setpassword("4567");
+        assertEquals("4567", user.getpassword());
         assertEquals("Prueba2", user.getUserName());
     }
 
