@@ -1,8 +1,6 @@
 package com.eci.ieti.model;
 import org.springframework.data.mongodb.core.mapping.Document;
-import lombok.Data;
 
-@Data
 @Document(collection = "User")
 public class User {
     private String userName;
