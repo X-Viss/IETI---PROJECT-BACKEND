@@ -9,6 +9,7 @@ public class Travel {
     private String description;
     private String lugar;
     private Date dueDate;
+    private String user;
     private List<Category> category;
 
     public String getTitle() {
@@ -37,6 +38,14 @@ public class Travel {
 
     public Date getDueDate() {
         return dueDate;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public void setDueDate(Date dueDate) {

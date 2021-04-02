@@ -1,4 +1,4 @@
-package com.eci.ieti;
+package com.eci.ieti.services;
 
 import com.eci.ieti.exceptions.TravelException;
 import com.eci.ieti.model.Travel;

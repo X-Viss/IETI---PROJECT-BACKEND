@@ -7,4 +7,7 @@ public class TravelException extends Exception{
     public TravelException(String message, Exception e){
         super(message, e);
     }
+
+    public TravelException(String message) {
+    }
 }
