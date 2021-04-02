@@ -23,7 +23,6 @@ public class TravelServiceImpl implements TravelService {
         try {
             return travelRepository.getUserTravels(user);
         } catch (TravelPersistenceException e) {
-            e.printStackTrace();
             throw new TravelException(e.getMessage(), e);
         }
     }
