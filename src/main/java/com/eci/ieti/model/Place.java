@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Data
 @Document(collection = "Location")
-public class Location {
+public class Place {
     @Id
     String namesite;
     String location;

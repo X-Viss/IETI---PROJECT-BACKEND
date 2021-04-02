@@ -20,4 +20,9 @@ class LocationTest {
    void getLocations() throws Exception {
         mockMvc.perform(get("/Locations")).andDo(print()).andExpect(status().isOk());
   }
+
+    @Test
+    void getLocation() throws Exception {
+        mockMvc.perform(get("/Locations/Laguna%20de%20Guatavita")).andDo(print()).andExpect(status().isOk());
+    }
 }
