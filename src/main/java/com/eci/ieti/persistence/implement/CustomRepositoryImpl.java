@@ -1,4 +1,4 @@
-package com.eci.ieti.persistence.repository.implement;
+package com.eci.ieti.persistence.implement;
 
 import com.eci.ieti.model.User;
 import com.eci.ieti.persistence.repository.CustomRepository;
