@@ -9,6 +9,12 @@ import java.util.List;
 @Service
 public interface TravelPersistenceService {
 
+    /**
+     * Get the persisted travels from the user
+     * @param user Name of the user
+     * @return List of user travels
+     * @throws TravelPersistenceException If the user does not exist
+     */
     public List<Travel> getUserTravels(String user) throws TravelPersistenceException;
 
 }

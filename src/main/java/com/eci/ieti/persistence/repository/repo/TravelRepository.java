@@ -7,6 +7,11 @@ import java.util.List;
 
 public interface TravelRepository extends MongoRepository<Travel, String> {
 
-    public List<Travel> findByUser(String email);
+    /**
+     * Find the user travels by name of the user owner
+     * @param user User name
+     * @return List of the user travels
+     */
+    public List<Travel> findByUser(String user);
 
 }

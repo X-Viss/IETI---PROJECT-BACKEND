@@ -6,11 +6,11 @@ import com.eci.ieti.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "api/travels")
 public class TravelController {
@@ -18,7 +18,11 @@ public class TravelController {
     @Autowired
     private TravelService travelService;
 
-
+    /**
+     * Return the user travels
+     * @param user Name of the user
+     * @return List of travels of the user
+     */
     @GetMapping
     public ResponseEntity<?> getTravels(@RequestParam("user") String user){
         try {

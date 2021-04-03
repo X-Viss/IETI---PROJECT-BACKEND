@@ -20,14 +20,18 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
     @Autowired
     private UserRepository userRepository;
 
-
+    /**
+     * Get the persisted travels from the user
+     * @param user Name of the user
+     * @return List of user travels
+     * @throws TravelPersistenceException If the user does not exist
+     */
     @Override
     public List<Travel> getUserTravels(String user) throws TravelPersistenceException {
         User actualUser = userRepository.findByUserName(user);
         if(actualUser==null){
             throw new TravelPersistenceException(TravelPersistenceException.USER_NOT_FOUND);
         }
-        System.out.println(actualUser);
         return travelRepository.findByUser(user);
     }
 }
