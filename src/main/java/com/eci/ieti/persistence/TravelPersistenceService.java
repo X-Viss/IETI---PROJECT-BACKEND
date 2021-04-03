@@ -17,4 +17,12 @@ public interface TravelPersistenceService {
      */
     public List<Travel> getUserTravels(String user) throws TravelPersistenceException;
 
+
+    /**
+     * Delete the travel with the specified id
+     * @param id Travel id
+     * @return The deleted travel
+     * @throws TravelPersistenceException If the travel does not exist
+     */
+    public Travel deleteTravel(long id) throws TravelPersistenceException;
 }

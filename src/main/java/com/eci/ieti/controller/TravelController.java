@@ -24,10 +24,21 @@ public class TravelController {
      * @return List of travels of the user
      */
     @GetMapping
-    public ResponseEntity<?> getTravels(@RequestParam("user") String user){
+    public ResponseEntity<Object> getTravels(@RequestParam("user") String user){
         try {
             return new ResponseEntity<>(travelService.getUserTravels(user), HttpStatus.OK);
         } catch (TravelException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    @DeleteMapping
+    public ResponseEntity<Object> deleteTravel(@RequestParam("travelId") long travelId){
+        try {
+            return new ResponseEntity<>(travelService.deleteTravelById(travelId), HttpStatus.OK);
+        } catch (TravelException e) {
+            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

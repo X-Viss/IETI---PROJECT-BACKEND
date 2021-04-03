@@ -26,4 +26,13 @@ public class TravelServiceImpl implements TravelService {
             throw new TravelException(e.getMessage(), e);
         }
     }
+
+    @Override
+    public Travel deleteTravelById(long travelId) throws TravelException {
+        try {
+            return travelRepository.deleteTravel(travelId);
+        } catch (TravelPersistenceException e) {
+            throw new TravelException(e.getMessage(), e);
+        }
+    }
 }

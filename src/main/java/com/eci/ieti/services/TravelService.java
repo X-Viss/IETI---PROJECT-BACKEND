@@ -10,4 +10,12 @@ import java.util.List;
 public interface TravelService {
 
     public List<Travel> getUserTravels(String user) throws TravelException;
+
+    /**
+     * Deletes the travel by a given id
+     * @param travelId Travel Id
+     * @return The deleted travel
+     * @throws TravelException If the travel does not exist
+     */
+    public Travel deleteTravelById(long travelId) throws TravelException;
 }

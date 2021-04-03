@@ -14,4 +14,11 @@ public interface TravelRepository extends MongoRepository<Travel, String> {
      */
     public List<Travel> findByUser(String user);
 
+
+    /**
+     * Delete the travel with the specified id
+     * @param travelId Travel id
+     * @return The deleted travel
+     */
+    public Travel deleteByTravelId(long travelId);
 }

@@ -34,4 +34,14 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
         }
         return travelRepository.findByUser(user);
     }
+
+    @Override
+    public Travel deleteTravel(long id) throws TravelPersistenceException {
+        Travel travel = travelRepository.deleteByTravelId(id);
+        System.out.println(travel);
+        if(travel==null){
+            throw new TravelPersistenceException(TravelPersistenceException.TRAVEL_NOT_FOUND);
+        }
+        return travel;
+    }
 }
