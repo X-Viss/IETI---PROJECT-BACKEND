@@ -17,5 +17,5 @@ public interface TravelService {
      * @return The deleted travel
      * @throws TravelException If the travel does not exist
      */
-    public Travel deleteTravelById(long travelId) throws TravelException;
+    public Travel deleteTravelById(String travelId) throws TravelException;
 }

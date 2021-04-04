@@ -36,12 +36,12 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
     }
 
     @Override
-    public Travel deleteTravel(long id) throws TravelPersistenceException {
-        Travel travel = travelRepository.deleteByTravelId(id);
-        System.out.println(travel);
-        if(travel==null){
+    public Travel deleteTravel(String id) throws TravelPersistenceException {
+        List<Travel> travels = travelRepository.deleteByTravelId(id);
+        System.out.println(travels);
+        if(travels.size()==0){
             throw new TravelPersistenceException(TravelPersistenceException.TRAVEL_NOT_FOUND);
         }
-        return travel;
+        return travels.get(0);
     }
 }

@@ -34,11 +34,10 @@ public class TravelController {
 
 
     @DeleteMapping
-    public ResponseEntity<Object> deleteTravel(@RequestParam("travelId") long travelId){
+    public ResponseEntity<Object> deleteTravel(@RequestParam("travelId") String travelId){
         try {
             return new ResponseEntity<>(travelService.deleteTravelById(travelId), HttpStatus.OK);
         } catch (TravelException e) {
-            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

@@ -14,7 +14,7 @@ public class Travel {
     @JsonIgnore
     private String id;
 
-    private long travelId;
+    private String travelId;
     private String title;
     private String description;
     private String lugar;
@@ -22,11 +22,11 @@ public class Travel {
     private String user;
     private List<Category> category;
 
-    public long getTravelId() {
+    public String getTravelId() {
         return travelId;
     }
 
-    public void setTravelId(long travelId) {
+    public void setTravelId(String travelId) {
         this.travelId = travelId;
     }
 
@@ -86,5 +86,23 @@ public class Travel {
 
     public void setCategory(List<Category> category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[ title:  %s, description: %s, lugar: %s, user: %s ]", this.title, this.description, this.lugar, this.user);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        try {
+            Travel travel = (Travel) obj;
+            return getTitle().equals(travel.getTitle()) &&
+                    getTravelId().equals(travel.travelId) &&
+                    getLugar().equals(travel.lugar) &&
+                    getUser().equals(travel.getUser());
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

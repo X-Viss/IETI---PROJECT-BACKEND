@@ -24,5 +24,5 @@ public interface TravelPersistenceService {
      * @return The deleted travel
      * @throws TravelPersistenceException If the travel does not exist
      */
-    public Travel deleteTravel(long id) throws TravelPersistenceException;
+    public Travel deleteTravel(String id) throws TravelPersistenceException;
 }

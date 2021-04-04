@@ -28,7 +28,7 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public Travel deleteTravelById(long travelId) throws TravelException {
+    public Travel deleteTravelById(String travelId) throws TravelException {
         try {
             return travelRepository.deleteTravel(travelId);
         } catch (TravelPersistenceException e) {
