@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Document(collection = "Travel")
 public class Travel {
@@ -14,7 +15,7 @@ public class Travel {
     @JsonIgnore
     private String id;
 
-    private long travelId;
+    private String travelId;
     private String title;
     private String description;
     private String lugar;
@@ -22,11 +23,11 @@ public class Travel {
     private String user;
     private List<Category> category;
 
-    public long getTravelId() {
+    public String getTravelId() {
         return travelId;
     }
 
-    public void setTravelId(long travelId) {
+    public void setTravelId(String travelId) {
         this.travelId = travelId;
     }
 
@@ -86,5 +87,30 @@ public class Travel {
 
     public void setCategory(List<Category> category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[ title:  %s, description: %s, lugar: %s, user: %s ]", this.title, this.description, this.lugar, this.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * 7 + Objects.hashCode(this.travelId);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null){
+            return false;
+        }
+        if(obj.getClass() != this.getClass()){
+            return false;
+        }
+        Travel travel = (Travel) obj;
+        return getTitle().equals(travel.getTitle()) &&
+                        getTravelId().equals(travel.getTravelId()) &&
+                        getLugar().equals(travel.getLugar()) &&
+                        getUser().equals(travel.getUser());
     }
 }
