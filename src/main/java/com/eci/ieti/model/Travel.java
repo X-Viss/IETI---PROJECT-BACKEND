@@ -101,19 +101,16 @@ public class Travel {
 
     @Override
     public boolean equals(Object obj) {
-        boolean ans = false;
-        try {
-            Travel travel = (Travel) obj;
-            if(travel!= null && obj.getClass() == this.getClass()){
-                ans = getTitle().equals(travel.getTitle()) &&
+        if(obj == null){
+            return false;
+        }
+        if(obj.getClass() != this.getClass()){
+            return false;
+        }
+        Travel travel = (Travel) obj;
+        return getTitle().equals(travel.getTitle()) &&
                         getTravelId().equals(travel.getTravelId()) &&
                         getLugar().equals(travel.getLugar()) &&
                         getUser().equals(travel.getUser());
-            }
-
-        } catch (Exception e) {
-
-        }
-        return ans;
     }
 }
