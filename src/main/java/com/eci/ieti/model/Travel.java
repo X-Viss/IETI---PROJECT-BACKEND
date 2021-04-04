@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Document(collection = "Travel")
 public class Travel {
@@ -94,11 +95,16 @@ public class Travel {
     }
 
     @Override
+    public int hashCode() {
+        return 31 * 7 + Objects.hashCode(this.travelId);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         boolean ans = false;
         try {
             Travel travel = (Travel) obj;
-            if(travel!= null){
+            if(travel!= null && obj.getClass() == this.getClass()){
                 ans = getTitle().equals(travel.getTitle()) &&
                         getTravelId().equals(travel.getTravelId()) &&
                         getLugar().equals(travel.getLugar()) &&
