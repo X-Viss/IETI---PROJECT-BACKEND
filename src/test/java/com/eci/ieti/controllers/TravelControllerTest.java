@@ -99,6 +99,18 @@ public class TravelControllerTest {
                 .content("asJsonString(userRolList)"))
                 .andDo(print())
                 .andExpect(status().isBadRequest());
+
+        mockMvc.perform( post("/api/create/rol")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("1"))
+                .andDo(print())
+                .andExpect(status().isBadRequest());
+
+        mockMvc.perform( post("/api/create/rol")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("2"))
+                .andDo(print())
+                .andExpect(status().isBadRequest());
     }
 
 
