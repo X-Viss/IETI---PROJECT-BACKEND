@@ -5,7 +5,6 @@ import com.eci.ieti.model.UserRol;
 import com.eci.ieti.model.UserRolSelect;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
-
 import com.eci.ieti.persistence.repository.repo.UserRolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,10 +31,12 @@ public class CustomRepositoryImpl implements CustomRepository{
     }
 
     @Override
-    public void postTravelerRol(List<UserRol> userRolList) {
+    public String postTravelerRol(List<UserRol> userRolList) {
         String id = java.util.UUID.randomUUID().toString();
         UserRolSelect user = new UserRolSelect(id, userRolList);
         userRolRepository.insert(user);
+        return id;
     }
+
 
 }

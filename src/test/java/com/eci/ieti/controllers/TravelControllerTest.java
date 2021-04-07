@@ -84,7 +84,7 @@ public class TravelControllerTest {
 
         List<UserRol> userRolList = new ArrayList<>();
 
-        mockMvc.perform( post("/api/create/rol")
+        mockMvc.perform( get("/api/create/rol")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(userRolList)))
                 .andDo(print())
@@ -94,19 +94,19 @@ public class TravelControllerTest {
     @Test
     public void postUserRoleShouldBeNotCreated() throws Exception {
 
-        mockMvc.perform( post("/api/create/rol")
+        mockMvc.perform( get("/api/create/rol")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("asJsonString(userRolList)"))
                 .andDo(print())
                 .andExpect(status().isBadRequest());
 
-        mockMvc.perform( post("/api/create/rol")
+        mockMvc.perform( get("/api/create/rol")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("1"))
                 .andDo(print())
                 .andExpect(status().isBadRequest());
 
-        mockMvc.perform( post("/api/create/rol")
+        mockMvc.perform( get("/api/create/rol")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("2"))
                 .andDo(print())

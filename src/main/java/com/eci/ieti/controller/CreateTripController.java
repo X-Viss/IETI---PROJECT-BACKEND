@@ -18,13 +18,14 @@ public class CreateTripController {
     @Autowired
     private TravelService travelService;
 
-    @PostMapping(value = "rol")
+    @GetMapping(value = "rol")
     public ResponseEntity<?> postSelectTravelerRol(@RequestBody List<UserRol> userRolList){
         try {
-            travelService.postTravelerRol(userRolList);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(travelService.postTravelerRol(userRolList), HttpStatus.CREATED);
         } catch (TravelException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+
 }

@@ -10,5 +10,5 @@ public interface CustomRepository{
     public void createUser(User user);
     public User getName(String name);
 
-    public void postTravelerRol(List<UserRol> userRolList);
+    public String postTravelerRol(List<UserRol> userRolList);
 }

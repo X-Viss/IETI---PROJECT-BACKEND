@@ -12,5 +12,5 @@ public interface TravelService {
 
     public List<Travel> getUserTravels(String user) throws TravelException;
 
-    public void postTravelerRol(List<UserRol> userRolList) throws TravelException;
+    public String postTravelerRol(List<UserRol> userRolList) throws TravelException;
 }
