@@ -48,4 +48,39 @@ public class TravelServiceImpl implements TravelService {
         customRepositoryImpl.putWeahterByUserRolSelected(weatherList, id);
     }
 
+    @Override
+    public void putAccessoriesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> accessories, String id) {
+        customRepositoryImpl.putAccessoriesByUserRolSelected(accessories, id);
+    }
+
+    @Override
+    public void putOnHandByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> onhand, String id) {
+        customRepositoryImpl.putOnHandByUserRolSelected(onhand, id);
+    }
+
+    @Override
+    public void putCleanlinessByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> cleanliness, String id) {
+        customRepositoryImpl.putCleanlinessByUserRolSelected(cleanliness, id);
+    }
+
+    @Override
+    public void putShoppingByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> shopping, String id) {
+        customRepositoryImpl.putShoppingByUserRolSelected(shopping, id);
+    }
+
+    @Override
+    public void putMedicineByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> medicine, String id) {
+        customRepositoryImpl.putMedicineByUserRolSelected(medicine, id);
+    }
+
+    @Override
+    public void putClothesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> clothes, String id) {
+        customRepositoryImpl.putClothesByUserRolSelected(clothes, id);
+    }
+
+    @Override
+    public void putSeveralByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id) {
+        customRepositoryImpl.putSeveralByUserRolSelected(several, id);
+    }
+
 }

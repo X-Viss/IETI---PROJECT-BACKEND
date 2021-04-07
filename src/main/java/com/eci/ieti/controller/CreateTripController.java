@@ -35,5 +35,47 @@ public class CreateTripController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
+    @PutMapping(value = "category/accessories")
+    public ResponseEntity<?> putAccessoriesByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> accessories, @RequestParam("id") String id) {
+        travelService.putAccessoriesByUserRolSelected(accessories, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "category/onhand")
+    public ResponseEntity<?> putOnHandByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> onhand, @RequestParam("id") String id) {
+        travelService.putOnHandByUserRolSelected(onhand, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "category/cleanliness")
+    public ResponseEntity<?> putCleanlinessByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> cleanliness, @RequestParam("id") String id) {
+        travelService.putCleanlinessByUserRolSelected(cleanliness, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "category/shopping")
+    public ResponseEntity<?> putShoppingByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> shopping, @RequestParam("id") String id) {
+        travelService.putShoppingByUserRolSelected(shopping, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "category/medicine")
+    public ResponseEntity<?> putMedicineByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> medicine, @RequestParam("id") String id) {
+        travelService.putMedicineByUserRolSelected(medicine, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "category/clothes")
+    public ResponseEntity<?> putClothesByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> clothes, @RequestParam("id") String id) {
+        travelService.putClothesByUserRolSelected(clothes, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "category/several")
+    public ResponseEntity<?> putSeveralByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> several, @RequestParam("id") String id) {
+        travelService.putSeveralByUserRolSelected(several, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
 
 }
