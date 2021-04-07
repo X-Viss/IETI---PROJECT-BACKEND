@@ -1,10 +1,13 @@
 package com.eci.ieti.controllers;
 
 
+import com.eci.ieti.model.Country;
 import com.eci.ieti.model.User;
 import com.eci.ieti.model.UserRol;
+import com.eci.ieti.model.UserRolSelect;
 import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
+import com.eci.ieti.persistence.repository.repo.UserRolRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.springframework.test.web.servlet.ResultActions;
 import java.util.ArrayList;
@@ -33,6 +37,9 @@ public class TravelControllerTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserRolRepository userRolRepository;
 
     @Test
     public void getTravelsShouldExist() throws Exception {
@@ -89,6 +96,23 @@ public class TravelControllerTest {
                 .content(asJsonString(userRolList)))
                 .andDo(print())
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void putUserRolSelectDestiny() throws Exception {
+
+        List<UserRol> userRolList = new ArrayList<>();
+
+        UserRolSelect user = new UserRolSelect("1", userRolList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        Country country = new Country();
+
+        mockMvc.perform( put("/api/create/destiny?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(country)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
     }
 
     public static String asJsonString(final Object obj) {

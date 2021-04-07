@@ -42,11 +42,6 @@ public class CustomRepositoryImpl implements CustomRepository{
     @Override
     public void putDestinyByUserRolSelected(Country destiny, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        System.out.println("");
-        System.out.println("");
-        System.out.println(destiny.getCountry());
-        System.out.println(id+ "    id llegada");
-        System.out.println(userRolSelect.getId());
         userRolSelect.setDestiny(destiny.getCountry());
         userRolRepository.save(userRolSelect);
     }
