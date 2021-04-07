@@ -1,10 +1,7 @@
 package com.eci.ieti.controllers;
 
 
-import com.eci.ieti.model.Country;
-import com.eci.ieti.model.User;
-import com.eci.ieti.model.UserRol;
-import com.eci.ieti.model.UserRolSelect;
+import com.eci.ieti.model.*;
 import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 import com.eci.ieti.persistence.repository.repo.UserRolRepository;
@@ -99,10 +96,9 @@ public class TravelControllerTest {
     }
 
     @Test
-    public void putUserRolSelectDestiny() throws Exception {
+    public void shouldBePutUserRolSelectDestiny() throws Exception {
 
         List<UserRol> userRolList = new ArrayList<>();
-
         UserRolSelect user = new UserRolSelect("1", userRolList);
         String id = user.getId();
         userRolRepository.insert(user);
@@ -111,6 +107,22 @@ public class TravelControllerTest {
         mockMvc.perform( put("/api/create/destiny?id="+id.toString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(country)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
+
+    @Test
+    public void shouldBePutUserRolSelectWeather() throws Exception {
+
+        List<UserRol> userRolList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("2", userRolList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        List<Weather> weatherList = new ArrayList<>();
+
+        mockMvc.perform( put("/api/create/weather?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(weatherList)))
                 .andDo(print())
                 .andExpect(status().isAccepted());
     }
