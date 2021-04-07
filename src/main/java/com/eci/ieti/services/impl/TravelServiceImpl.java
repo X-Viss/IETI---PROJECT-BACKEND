@@ -45,42 +45,42 @@ public class TravelServiceImpl implements TravelService {
 
     @Override
     public void putWeahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id) {
-        customRepositoryImpl.putWeahterByUserRolSelected(weatherList, id);
+        customRepositoryImpl.weahterByUserRolSelected(weatherList, id);
     }
 
     @Override
     public void putAccessoriesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> accessories, String id) {
-        customRepositoryImpl.putAccessoriesByUserRolSelected(accessories, id);
+        customRepositoryImpl.accessoriesByUserRolSelected(accessories, id);
     }
 
     @Override
     public void putOnHandByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> onhand, String id) {
-        customRepositoryImpl.putOnHandByUserRolSelected(onhand, id);
+        customRepositoryImpl.onHandByUserRolSelected(onhand, id);
     }
 
     @Override
     public void putCleanlinessByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> cleanliness, String id) {
-        customRepositoryImpl.putCleanlinessByUserRolSelected(cleanliness, id);
+        customRepositoryImpl.cleanlinessByUserRolSelected(cleanliness, id);
     }
 
     @Override
     public void putShoppingByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> shopping, String id) {
-        customRepositoryImpl.putShoppingByUserRolSelected(shopping, id);
+        customRepositoryImpl.shoppingByUserRolSelected(shopping, id);
     }
 
     @Override
     public void putMedicineByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> medicine, String id) {
-        customRepositoryImpl.putMedicineByUserRolSelected(medicine, id);
+        customRepositoryImpl.medicineByUserRolSelected(medicine, id);
     }
 
     @Override
     public void putClothesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> clothes, String id) {
-        customRepositoryImpl.putClothesByUserRolSelected(clothes, id);
+        customRepositoryImpl.clothesByUserRolSelected(clothes, id);
     }
 
     @Override
     public void putSeveralByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id) {
-        customRepositoryImpl.putSeveralByUserRolSelected(several, id);
+        customRepositoryImpl.severalByUserRolSelected(several, id);
     }
 
 }

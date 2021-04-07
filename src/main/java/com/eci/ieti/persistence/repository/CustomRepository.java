@@ -15,19 +15,19 @@ public interface CustomRepository{
 
     public void putDestinyByUserRolSelected(Country destiny, String id);
 
-    public void putWeahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id);
+    public void weahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id);
 
-    public void putAccessoriesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> accessories, String id);
+    public void accessoriesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> accessories, String id);
 
-    public void putOnHandByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> onhand, String id);
+    public void onHandByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> onhand, String id);
 
-    public void putCleanlinessByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> cleanliness, String id);
+    public void cleanlinessByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> cleanliness, String id);
 
-    public void putShoppingByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> shopping, String id);
+    public void shoppingByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> shopping, String id);
 
-    public void putMedicineByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> medicine, String id);
+    public void medicineByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> medicine, String id);
 
-    public void putClothesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> clothes, String id);
+    public void clothesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> clothes, String id);
 
-    public void putSeveralByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id);
+    public void severalByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id);
 }
