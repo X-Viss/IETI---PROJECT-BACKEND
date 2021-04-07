@@ -33,7 +33,7 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public String postTravelerRol(List<UserRol> userRolList) throws TravelException {
+    public String postTravelerRol(List<UserRol> userRolList) {
         return customRepositoryImpl.postTravelerRol(userRolList);
     }
 
