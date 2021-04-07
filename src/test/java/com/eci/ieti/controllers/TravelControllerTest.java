@@ -84,7 +84,7 @@ public class TravelControllerTest {
     }
 
     @Test
-    public void getUserRole() throws Exception {
+    public void postUserRoleShouldBeCreated() throws Exception {
 
         List<UserRol> userRolList = new ArrayList<>();
 
@@ -93,6 +93,16 @@ public class TravelControllerTest {
                 .content(asJsonString(userRolList)))
                 .andDo(print())
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void postUserRoleShouldBeNotCreated() throws Exception {
+
+        mockMvc.perform( post("/api/create/rol")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("asJsonString(userRolList)"))
+                .andDo(print())
+                .andExpect(status().isBadRequest());
     }
 
 
