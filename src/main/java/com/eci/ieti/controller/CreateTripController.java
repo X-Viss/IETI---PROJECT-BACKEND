@@ -1,8 +1,7 @@
 package com.eci.ieti.controller;
 
 import com.eci.ieti.model.Country;
-import com.eci.ieti.model.UserRol;
-import com.eci.ieti.model.Weather;
+import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import com.eci.ieti.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +19,8 @@ public class CreateTripController {
     private TravelService travelService;
 
     @PostMapping(value = "rol")
-    public ResponseEntity<?> postSelectTravelerRol(@RequestBody List<UserRol> userRolList) {
-        return new ResponseEntity<>(travelService.postTravelerRol(userRolList), HttpStatus.CREATED);
+    public ResponseEntity<?> postSelectTravelerRol(@RequestBody List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
+        return new ResponseEntity<>(travelService.postTravelerRol(generitToUserRolWeatherOrCategoryList), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "destiny")
@@ -31,7 +30,7 @@ public class CreateTripController {
     }
 
     @PutMapping(value = "weather")
-    public ResponseEntity<?> putWeatherByUserRolSelected(@RequestBody List<Weather> weatherList, @RequestParam("id") String id) {
+    public ResponseEntity<?> putWeatherByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> weatherList, @RequestParam("id") String id) {
         travelService.putWeahterByUserRolSelected(weatherList, id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }

@@ -86,11 +86,11 @@ public class TravelControllerTest {
     @Test
     public void postUserRoleShouldBeCreated() throws Exception {
 
-        List<UserRol> userRolList = new ArrayList<>();
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
 
         mockMvc.perform( post("/api/create/rol")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(userRolList)))
+                .content(asJsonString(generitToUserRolWeatherOrCategoryList)))
                 .andDo(print())
                 .andExpect(status().isCreated());
     }
@@ -98,8 +98,8 @@ public class TravelControllerTest {
     @Test
     public void shouldBePutUserRolSelectDestiny() throws Exception {
 
-        List<UserRol> userRolList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("1", userRolList);
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("1", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
         userRolRepository.insert(user);
         Country country = new Country();
@@ -114,11 +114,11 @@ public class TravelControllerTest {
     @Test
     public void shouldBePutUserRolSelectWeather() throws Exception {
 
-        List<UserRol> userRolList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("2", userRolList);
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("2", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
         userRolRepository.insert(user);
-        List<Weather> weatherList = new ArrayList<>();
+        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
         mockMvc.perform( put("/api/create/weather?id="+id.toString())
                 .contentType(MediaType.APPLICATION_JSON)

@@ -10,16 +10,16 @@ public class UserRolSelect {
 
     @Id
     public String id;
-    public List<UserRol> userRolList;
-    public List<Weather> weatherList;
+    public List<GeneritToUserRolWeatherOrCategory> userRolList;
+    public List<GeneritToUserRolWeatherOrCategory> weatherList;
     public String destiny;
 
     public UserRolSelect() {
     }
 
-    public UserRolSelect(String id, List<UserRol> userRolList) {
+    public UserRolSelect(String id, List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
         this.id = id;
-        this.userRolList = userRolList;
+        this.userRolList = generitToUserRolWeatherOrCategoryList;
     }
 
     public String getId() {
@@ -30,11 +30,11 @@ public class UserRolSelect {
         this.id = id;
     }
 
-    public List<Weather> getWeatherList() {
+    public List<GeneritToUserRolWeatherOrCategory> getWeatherList() {
         return weatherList;
     }
 
-    public void setWeatherList(List<Weather> weatherList) {
+    public void setWeatherList(List<GeneritToUserRolWeatherOrCategory> weatherList) {
         this.weatherList = weatherList;
     }
 
@@ -46,11 +46,11 @@ public class UserRolSelect {
         this.destiny = destiny;
     }
 
-    public List<UserRol> getUserRolList() {
+    public List<GeneritToUserRolWeatherOrCategory> getUserRolList() {
         return userRolList;
     }
 
-    public void setUserRolList(List<UserRol> userRolList) {
-        this.userRolList = userRolList;
+    public void setUserRolList(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
+        this.userRolList = generitToUserRolWeatherOrCategoryList;
     }
 }

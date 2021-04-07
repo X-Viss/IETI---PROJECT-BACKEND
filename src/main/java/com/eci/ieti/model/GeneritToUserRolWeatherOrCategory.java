@@ -1,14 +1,14 @@
 package com.eci.ieti.model;
 
-public class UserRol {
+public class GeneritToUserRolWeatherOrCategory {
 
     public boolean check;
     public String name;
     public String path;
 
-    public UserRol(){}
+    public GeneritToUserRolWeatherOrCategory(){}
 
-    public UserRol(boolean check, String name, String path) {
+    public GeneritToUserRolWeatherOrCategory(boolean check, String name, String path) {
         this.check = check;
         this.name = name;
         this.path = path;

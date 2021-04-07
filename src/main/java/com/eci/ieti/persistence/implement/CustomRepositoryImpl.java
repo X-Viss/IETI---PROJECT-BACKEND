@@ -29,9 +29,9 @@ public class CustomRepositoryImpl implements CustomRepository {
     }
 
     @Override
-    public String postTravelerRol(List<UserRol> userRolList) {
+    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
         String id = java.util.UUID.randomUUID().toString();
-        UserRolSelect user = new UserRolSelect(id, userRolList);
+        UserRolSelect user = new UserRolSelect(id, generitToUserRolWeatherOrCategoryList);
         userRolRepository.insert(user);
         return id;
     }
@@ -44,7 +44,7 @@ public class CustomRepositoryImpl implements CustomRepository {
     }
 
     @Override
-    public void putWeahterByUserRolSelected(List<Weather> weatherList, String id) {
+    public void putWeahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
         userRolSelect.setWeatherList(weatherList);
         userRolRepository.save(userRolSelect);
