@@ -94,23 +94,10 @@ public class TravelControllerTest {
     @Test
     public void postUserRoleShouldBeNotCreated() throws Exception {
 
-        mockMvc.perform( get("/api/create/rol")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("asJsonString(userRolList)"))
+        mockMvc.perform(get("/api/create/rol"))
                 .andDo(print())
                 .andExpect(status().isBadRequest());
 
-        mockMvc.perform( get("/api/create/rol")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("1"))
-                .andDo(print())
-                .andExpect(status().isBadRequest());
-
-        mockMvc.perform( get("/api/create/rol")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("2"))
-                .andDo(print())
-                .andExpect(status().isBadRequest());
     }
 
 
