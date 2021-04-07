@@ -1,8 +1,5 @@
 package com.eci.ieti.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection = "UserRol")
 public class UserRol {
 
     public boolean check;

@@ -2,6 +2,7 @@ package com.eci.ieti.persistence.implement;
 
 import com.eci.ieti.model.User;
 import com.eci.ieti.model.UserRol;
+import com.eci.ieti.model.UserRolSelect;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 
@@ -32,7 +33,10 @@ public class CustomRepositoryImpl implements CustomRepository{
 
     @Override
     public void postTravelerRol(List<UserRol> userRolList) {
-        userRolRepository.insert(userRolList);
+        System.out.println(userRolList.size());
+        String id = java.util.UUID.randomUUID().toString();
+        UserRolSelect user = new UserRolSelect(id, userRolList);
+        userRolRepository.insert(user);
     }
 
 }
