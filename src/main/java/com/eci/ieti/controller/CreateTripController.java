@@ -2,6 +2,7 @@ package com.eci.ieti.controller;
 
 import com.eci.ieti.model.Country;
 import com.eci.ieti.model.UserRol;
+import com.eci.ieti.model.Weather;
 import com.eci.ieti.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class CreateTripController {
     @PutMapping(value = "destiny")
     public ResponseEntity<?> putDestinyByUserRolSelected(@RequestBody Country destiny, @RequestParam("id") String id) {
         travelService.putDestinyByUserRolSelected(destiny, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "weather")
+    public ResponseEntity<?> putWeatherByUserRolSelected(@RequestBody List<Weather> weatherList, @RequestParam("id") String id) {
+        travelService.putWeahterByUserRolSelected(weatherList, id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

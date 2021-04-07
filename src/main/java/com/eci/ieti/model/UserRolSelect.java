@@ -11,6 +11,7 @@ public class UserRolSelect {
     @Id
     public String id;
     public List<UserRol> userRolList;
+    public List<Weather> weatherList;
     public String destiny;
 
     public UserRolSelect() {
@@ -27,6 +28,14 @@ public class UserRolSelect {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<Weather> getWeatherList() {
+        return weatherList;
+    }
+
+    public void setWeatherList(List<Weather> weatherList) {
+        this.weatherList = weatherList;
     }
 
     public String getDestiny() {

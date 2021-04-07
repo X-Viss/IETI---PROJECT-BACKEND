@@ -1,9 +1,6 @@
 package com.eci.ieti.persistence.implement;
 
-import com.eci.ieti.model.Country;
-import com.eci.ieti.model.User;
-import com.eci.ieti.model.UserRol;
-import com.eci.ieti.model.UserRolSelect;
+import com.eci.ieti.model.*;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 import com.eci.ieti.persistence.repository.repo.UserRolRepository;
@@ -13,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component("CustomRepository")
-public class CustomRepositoryImpl implements CustomRepository{
+public class CustomRepositoryImpl implements CustomRepository {
 
     @Autowired
     UserRepository userRepository;
@@ -23,9 +20,9 @@ public class CustomRepositoryImpl implements CustomRepository{
 
     @Override
     public void createUser(User user) {
-        userRepository.insert(user);        
-    }    
-    
+        userRepository.insert(user);
+    }
+
     @Override
     public User getName(String name) {
         return userRepository.findByUserName(name);
@@ -43,6 +40,13 @@ public class CustomRepositoryImpl implements CustomRepository{
     public void putDestinyByUserRolSelected(Country destiny, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
         userRolSelect.setDestiny(destiny.getCountry());
+        userRolRepository.save(userRolSelect);
+    }
+
+    @Override
+    public void putWeahterByUserRolSelected(List<Weather> weatherList, String id) {
+        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
+        userRolSelect.setWeatherList(weatherList);
         userRolRepository.save(userRolSelect);
     }
 
