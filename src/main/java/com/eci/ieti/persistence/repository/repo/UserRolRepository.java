@@ -5,4 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UserRolRepository extends MongoRepository<UserRolSelect, String> {
 
+    public UserRolSelect findUserRolSelectById(String id);
 }

@@ -1,5 +1,6 @@
 package com.eci.ieti.persistence.implement;
 
+import com.eci.ieti.model.Country;
 import com.eci.ieti.model.User;
 import com.eci.ieti.model.UserRol;
 import com.eci.ieti.model.UserRolSelect;
@@ -36,6 +37,18 @@ public class CustomRepositoryImpl implements CustomRepository{
         UserRolSelect user = new UserRolSelect(id, userRolList);
         userRolRepository.insert(user);
         return id;
+    }
+
+    @Override
+    public void putDestinyByUserRolSelected(Country destiny, String id) {
+        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
+        System.out.println("");
+        System.out.println("");
+        System.out.println(destiny.getCountry());
+        System.out.println(id+ "    id llegada");
+        System.out.println(userRolSelect.getId());
+        userRolSelect.setDestiny(destiny.getCountry());
+        userRolRepository.save(userRolSelect);
     }
 
 

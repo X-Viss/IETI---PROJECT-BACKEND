@@ -1,6 +1,7 @@
 package com.eci.ieti.services.impl;
 
 import com.eci.ieti.exceptions.persistence.TravelPersistenceException;
+import com.eci.ieti.model.Country;
 import com.eci.ieti.model.UserRol;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.services.TravelService;
@@ -35,6 +36,11 @@ public class TravelServiceImpl implements TravelService {
     @Override
     public String postTravelerRol(List<UserRol> userRolList) {
         return customRepositoryImpl.postTravelerRol(userRolList);
+    }
+
+    @Override
+    public void putDestinyByUserRolSelected(Country destiny, String id) {
+        customRepositoryImpl.putDestinyByUserRolSelected(destiny, id);
     }
 
 }

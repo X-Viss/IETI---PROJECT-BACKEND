@@ -1,15 +1,20 @@
 package com.eci.ieti.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
 @Document(collection = "UserRol")
 public class UserRolSelect {
 
+    @Id
     public String id;
     public List<UserRol> userRolList;
+    public String destiny;
 
-    public UserRolSelect() {}
+    public UserRolSelect() {
+    }
 
     public UserRolSelect(String id, List<UserRol> userRolList) {
         this.id = id;
@@ -22,6 +27,14 @@ public class UserRolSelect {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getDestiny() {
+        return destiny;
+    }
+
+    public void setDestiny(String destiny) {
+        this.destiny = destiny;
     }
 
     public List<UserRol> getUserRolList() {

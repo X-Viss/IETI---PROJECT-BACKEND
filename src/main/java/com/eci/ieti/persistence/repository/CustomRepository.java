@@ -1,5 +1,6 @@
 package com.eci.ieti.persistence.repository;
 
+import com.eci.ieti.model.Country;
 import com.eci.ieti.model.User;
 import com.eci.ieti.model.UserRol;
 
@@ -11,4 +12,6 @@ public interface CustomRepository{
     public User getName(String name);
 
     public String postTravelerRol(List<UserRol> userRolList);
+
+    public void putDestinyByUserRolSelected(Country destiny, String id);
 }
