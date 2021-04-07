@@ -127,6 +127,119 @@ public class TravelControllerTest {
                 .andExpect(status().isAccepted());
     }
 
+    @Test
+    public void shouldBePutUserRolSelectAccessories() throws Exception {
+
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("3", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
+
+        mockMvc.perform( put("/api/create/category/accessories?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(weatherList)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
+
+    @Test
+    public void shouldBePutUserRolSelectOnHand() throws Exception {
+
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("4", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
+
+        mockMvc.perform( put("/api/create/category/onhand?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(weatherList)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
+
+    @Test
+    public void shouldBePutUserRolSelectCleanliness() throws Exception {
+
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("5", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
+
+        mockMvc.perform( put("/api/create/category/cleanliness?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(weatherList)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
+
+    @Test
+    public void shouldBePutUserRolSelectShopping() throws Exception {
+
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("6", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
+
+        mockMvc.perform( put("/api/create/category/shopping?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(weatherList)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
+
+    @Test
+    public void shouldBePutUserRolSelectMedicine() throws Exception {
+
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("7", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
+
+        mockMvc.perform( put("/api/create/category/medicine?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(weatherList)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
+
+    @Test
+    public void shouldBePutUserRolSelectClothes() throws Exception {
+
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("8", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
+
+        mockMvc.perform( put("/api/create/category/clothes?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(weatherList)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
+
+    @Test
+    public void severalBePutUserRolSelectSeveral() throws Exception {
+
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        UserRolSelect user = new UserRolSelect("9", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        userRolRepository.insert(user);
+        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
+
+        mockMvc.perform( put("/api/create/category/several?id="+id.toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(weatherList)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
+
+
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);

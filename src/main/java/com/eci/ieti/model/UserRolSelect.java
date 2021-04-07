@@ -9,10 +9,17 @@ import java.util.List;
 public class UserRolSelect {
 
     @Id
-    public String id;
-    public List<GeneritToUserRolWeatherOrCategory> userRolList;
-    public List<GeneritToUserRolWeatherOrCategory> weatherList;
-    public String destiny;
+    private String id;
+    private List<GeneritToUserRolWeatherOrCategory> userRolList;
+    private List<GeneritToUserRolWeatherOrCategory> weatherList;
+    private List<GeneritToUserRolWeatherOrCategory> accessoriesList;
+    private List<GeneritToUserRolWeatherOrCategory> onHandList;
+    private List<GeneritToUserRolWeatherOrCategory> cleanlinessList;
+    private List<GeneritToUserRolWeatherOrCategory> shoppingList;
+    private List<GeneritToUserRolWeatherOrCategory> medicineList;
+    private List<GeneritToUserRolWeatherOrCategory> clothesList;
+    private List<GeneritToUserRolWeatherOrCategory> severalList;
+    private String destiny;
 
     public UserRolSelect() {
     }
@@ -28,6 +35,62 @@ public class UserRolSelect {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<GeneritToUserRolWeatherOrCategory> getAccessoriesList() {
+        return accessoriesList;
+    }
+
+    public void setAccessoriesList(List<GeneritToUserRolWeatherOrCategory> accessoriesList) {
+        this.accessoriesList = accessoriesList;
+    }
+
+    public List<GeneritToUserRolWeatherOrCategory> getOnHandList() {
+        return onHandList;
+    }
+
+    public void setOnHandList(List<GeneritToUserRolWeatherOrCategory> onHandList) {
+        this.onHandList = onHandList;
+    }
+
+    public List<GeneritToUserRolWeatherOrCategory> getCleanlinessList() {
+        return cleanlinessList;
+    }
+
+    public void setCleanlinessList(List<GeneritToUserRolWeatherOrCategory> cleanlinessList) {
+        this.cleanlinessList = cleanlinessList;
+    }
+
+    public List<GeneritToUserRolWeatherOrCategory> getShoppingList() {
+        return shoppingList;
+    }
+
+    public void setShoppingList(List<GeneritToUserRolWeatherOrCategory> shoppingList) {
+        this.shoppingList = shoppingList;
+    }
+
+    public List<GeneritToUserRolWeatherOrCategory> getMedicineList() {
+        return medicineList;
+    }
+
+    public void setMedicineList(List<GeneritToUserRolWeatherOrCategory> medicineList) {
+        this.medicineList = medicineList;
+    }
+
+    public List<GeneritToUserRolWeatherOrCategory> getClothesList() {
+        return clothesList;
+    }
+
+    public void setClothesList(List<GeneritToUserRolWeatherOrCategory> clothesList) {
+        this.clothesList = clothesList;
+    }
+
+    public List<GeneritToUserRolWeatherOrCategory> getSeveralList() {
+        return severalList;
+    }
+
+    public void setSeveralList(List<GeneritToUserRolWeatherOrCategory> severalList) {
+        this.severalList = severalList;
     }
 
     public List<GeneritToUserRolWeatherOrCategory> getWeatherList() {

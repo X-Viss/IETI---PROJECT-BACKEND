@@ -53,49 +53,49 @@ public class CustomRepositoryImpl implements CustomRepository {
     @Override
     public void accessoriesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> accessories, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setWeatherList(accessories);
+        userRolSelect.setAccessoriesList(accessories);
         userRolRepository.save(userRolSelect);
     }
 
     @Override
     public void onHandByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> onhand, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setWeatherList(onhand);
+        userRolSelect.setOnHandList(onhand);
         userRolRepository.save(userRolSelect);
     }
 
     @Override
     public void cleanlinessByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> cleanliness, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setWeatherList(cleanliness);
+        userRolSelect.setCleanlinessList(cleanliness);
         userRolRepository.save(userRolSelect);
     }
 
     @Override
     public void shoppingByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> shopping, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setWeatherList(shopping);
+        userRolSelect.setShoppingList(shopping);
         userRolRepository.save(userRolSelect);
     }
 
     @Override
     public void medicineByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> medicine, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setWeatherList(medicine);
+        userRolSelect.setMedicineList(medicine);
         userRolRepository.save(userRolSelect);
     }
 
     @Override
     public void clothesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> clothes, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setWeatherList(clothes);
+        userRolSelect.setClothesList(clothes);
         userRolRepository.save(userRolSelect);
     }
 
     @Override
     public void severalByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id) {
         UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setWeatherList(several);
+        userRolSelect.setSeveralList(several);
         userRolRepository.save(userRolSelect);
     }
 

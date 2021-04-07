@@ -2,9 +2,9 @@ package com.eci.ieti.model;
 
 public class GeneritToUserRolWeatherOrCategory {
 
-    public boolean check;
-    public String name;
-    public String path;
+    private boolean check;
+    private String name;
+    private String path;
 
     public GeneritToUserRolWeatherOrCategory(){}
 
