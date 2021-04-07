@@ -18,7 +18,7 @@ public class CreateTripController {
     @Autowired
     private TravelService travelService;
 
-    @PostMapping
+    @PostMapping(value = "rol")
     public ResponseEntity<?> postSelectTravelerRol(@RequestBody List<UserRol> userRolList){
         try {
             travelService.postTravelerRol(userRolList);

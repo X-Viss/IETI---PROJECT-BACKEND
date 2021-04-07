@@ -33,7 +33,6 @@ public class CustomRepositoryImpl implements CustomRepository{
 
     @Override
     public void postTravelerRol(List<UserRol> userRolList) {
-        System.out.println(userRolList.size());
         String id = java.util.UUID.randomUUID().toString();
         UserRolSelect user = new UserRolSelect(id, userRolList);
         userRolRepository.insert(user);
