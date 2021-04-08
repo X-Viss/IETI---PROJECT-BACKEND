@@ -395,8 +395,6 @@ public class TravelControllerTest {
         weatherCategoryRolRepository.save(weatherCategoryRol2);
 
         List<String> mano = new ArrayList<>();
-        mano.add("Papeles");
-        mano.add("Dinero");
         WeatherCategoryRol weatherCategoryRol3 = new WeatherCategoryRol();
         weatherCategoryRol3.setId("Mano");
         weatherCategoryRol3.setOnHand(mano);
@@ -406,11 +404,6 @@ public class TravelControllerTest {
         List<String>  trabajoRopa = new ArrayList<>();
         List<String>  trabajoSalud = new ArrayList<>();
         List<String>  trabajoMano= new ArrayList<>();
-        trabajoAccesorios.add("Computador");
-        trabajoAccesorios.add("Mouse");
-        trabajoRopa.add("Casco");
-        trabajoSalud.add("Seguro medico");
-        trabajoMano.add("Celular");
         WeatherCategoryRol weatherCategoryRol4 = new WeatherCategoryRol();
         weatherCategoryRol4.setId("Trabajo");
         weatherCategoryRol4.setWorkAccesories(trabajoAccesorios);
@@ -421,10 +414,6 @@ public class TravelControllerTest {
 
         List<String> turistaAccesorios = new ArrayList<>();
         List<String> turistaRopa = new ArrayList<>();
-        turistaAccesorios.add("Maleta");
-        turistaAccesorios.add("Mapa");
-        turistaRopa.add("Vestidos");
-        turistaRopa.add("Sandalias");
         WeatherCategoryRol weatherCategoryRol5 = new WeatherCategoryRol();
         weatherCategoryRol5.setId("Turista");
         weatherCategoryRol5.setTouristAccesories(turistaAccesorios);
@@ -432,7 +421,6 @@ public class TravelControllerTest {
         weatherCategoryRolRepository.save(weatherCategoryRol5);
 
         List<String> parejaAccesorios = new ArrayList<>();
-        parejaAccesorios.add("Silla para bebe");
         WeatherCategoryRol weatherCategoryRol6 = new WeatherCategoryRol();
         weatherCategoryRol6.setId("Pareja");
         weatherCategoryRol6.setCoupleAcceosires(parejaAccesorios);
@@ -440,10 +428,6 @@ public class TravelControllerTest {
 
         List<String> mochileroAccesorios = new ArrayList<>();
         List<String> mochileroRopa = new ArrayList<>();
-        mochileroAccesorios.add("Brújula");
-        mochileroAccesorios.add("Hoyas");
-        mochileroAccesorios.add("Bloqueador");
-        mochileroRopa.add("Chaquetas");
         WeatherCategoryRol weatherCategoryRol7 = new WeatherCategoryRol();
         weatherCategoryRol7.setId("Mochilero");
         weatherCategoryRol7.setBackpackerAccesories(mochileroAccesorios);
@@ -453,8 +437,6 @@ public class TravelControllerTest {
         List<String> mascotaAccesorios= new ArrayList<>();
         List<String> mascotaRopa = new ArrayList<>();
         List<String> mascotaSalud = new ArrayList<>();
-        mascotaAccesorios.add("Cama de la mascota");
-        mascotaSalud.add("Medicamento contra garrapatas");
         WeatherCategoryRol weatherCategoryRol8 = new WeatherCategoryRol();
         weatherCategoryRol8.setId("Mascota");
         weatherCategoryRol8.setPetsAccesories(mascotaAccesorios);
@@ -464,10 +446,6 @@ public class TravelControllerTest {
 
         List<String> primaverAccesorios = new ArrayList<>();
         List<String> primaveraRopa = new ArrayList<>();
-        primaverAccesorios.add("Gafas");
-        primaverAccesorios.add("Balacas");
-        primaveraRopa.add("Chanclas");
-        primaveraRopa.add("Tenis");
         WeatherCategoryRol weatherCategoryRol9 = new WeatherCategoryRol();
         weatherCategoryRol9.setId("Primavera");
         weatherCategoryRol9.setSpringAccesories(primaverAccesorios);
@@ -477,19 +455,12 @@ public class TravelControllerTest {
         List<String> otoñoAccesorios = new ArrayList<>();
         List<String> otoñoRopa = new ArrayList<>();
         WeatherCategoryRol weatherCategoryRol10 = new WeatherCategoryRol();
-        otoñoAccesorios.add("Sombrilla");
-        otoñoRopa.add("Guantes");
-        otoñoRopa.add("Gorros");
-        weatherCategoryRol10.setId("Otoño");
         weatherCategoryRol10.setAutumnAccesories(otoñoAccesorios);
         weatherCategoryRol10.setAutumnClothes(otoñoRopa);
         weatherCategoryRolRepository.save(weatherCategoryRol10);
 
         List<String> veranoAccesorios = new ArrayList<>();
         List<String> veranoRopa = new ArrayList<>();
-        veranoAccesorios.add("Gafas de sol");
-        veranoRopa.add("Camisas de esquelet");
-        veranoRopa.add("Chanclas");
         WeatherCategoryRol weatherCategoryRol11 = new WeatherCategoryRol();
         weatherCategoryRol11.setId("Verano");
         weatherCategoryRol11.setSummerAccesories(veranoAccesorios);
@@ -498,10 +469,6 @@ public class TravelControllerTest {
 
         List<String> inviernoAccesorios = new ArrayList<>();
         List<String> inviernoRopa = new ArrayList<>();
-        inviernoAccesorios.add("Orejeras");
-        inviernoAccesorios.add("Tabla de esquí");
-        inviernoRopa.add("Botas");
-        inviernoRopa.add("Tapa-bocas");
         WeatherCategoryRol weatherCategoryRol12 = new WeatherCategoryRol();
         weatherCategoryRol12.setId("Invierno");
         weatherCategoryRol12.setWinterAccesories(inviernoAccesorios);
