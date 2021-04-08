@@ -258,9 +258,9 @@ public class TravelControllerTest {
         String id = user.getId();
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
+        weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Primavera", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));
-        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
         mockMvc.perform( put("/api/create/weather?id="+id.toString())
@@ -488,10 +488,11 @@ public class TravelControllerTest {
         String id = user.getId();
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
-        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Otoño", "cualquier cosa"));
+        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Verano", "cualquier cosa"));
+
 
         mockMvc.perform( put("/api/create/weather?id="+id.toString())
                 .contentType(MediaType.APPLICATION_JSON)
