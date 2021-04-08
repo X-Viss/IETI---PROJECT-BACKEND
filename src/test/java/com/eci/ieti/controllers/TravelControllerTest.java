@@ -112,22 +112,6 @@ public class TravelControllerTest {
     }
 
     @Test
-    public void shouldBePutUserRolSelectWeather() throws Exception {
-
-        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("2", generitToUserRolWeatherOrCategoryList);
-        String id = user.getId();
-        userRolRepository.insert(user);
-        List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
-
-        mockMvc.perform( put("/api/create/weather?id="+id.toString())
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(weatherList)))
-                .andDo(print())
-                .andExpect(status().isAccepted());
-    }
-
-    @Test
     public void shouldBePutUserRolSelectAccessories() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
