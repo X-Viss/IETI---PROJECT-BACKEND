@@ -243,13 +243,13 @@ public class CustomRepositoryImpl implements CustomRepository {
                                         WeatherCategoryRol backpacker, WeatherCategoryRol tourist) {
         List<String> res = new ArrayList<>();
         if (weatherName.equals("Primavera")) {
-            if(wetherList.getSpringAccesories()!=null) {
+            if(wetherList.getSpringClothes()!=null) {
                 for (String data : wetherList.getSpringClothes()) {
                     res.add(data);
                 }
             }
         } else if (weatherName.equals("Verano")) {
-            if(wetherList.getSummerAccesories()!=null) {
+            if(wetherList.getSummerClothes()!=null) {
                 for (String data : wetherList.getSummerClothes()) {
                     if (!res.contains(data)) {
                         res.add(data);
@@ -257,7 +257,7 @@ public class CustomRepositoryImpl implements CustomRepository {
                 }
             }
         } else if (weatherName.equals("Otoño")) {
-            if(wetherList.getAutumnAccesories()!=null) {
+            if(wetherList.getAutumnClothes()!=null) {
                 for (String data : wetherList.getAutumnClothes()) {
                     if (!res.contains(data)) {
                         res.add(data);
@@ -266,7 +266,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         } else {
             for (String data : wetherList.getWinterClothes()) {
-                if (wetherList.getWinterAccesories() != null) {
+                if (wetherList.getWinterClothes() != null) {
                     if (!res.contains(data)) {
                         res.add(data);
                     }
