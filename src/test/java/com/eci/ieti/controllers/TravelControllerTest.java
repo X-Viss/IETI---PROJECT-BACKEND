@@ -251,9 +251,9 @@ public class TravelControllerTest {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje con mascotas", "cualquier cosa"));
-        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje con mascotas", "cualquier cosa"));
-        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje con mascotas", "cualquier cosa"));
-        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje con mascotas", "cualquier cosa"));
+        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje como Mochilero", "cualquier cosa"));
+        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje en pareja", "cualquier cosa"));
+        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje como turist", "cualquier cosa"));
         UserRolSelect user = new UserRolSelect("2", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
         userRolRepository.insert(user);
@@ -481,10 +481,9 @@ public class TravelControllerTest {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje con mascotas", "cualquier cosa"));
-        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje con mascotas", "cualquier cosa"));
-        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje con mascotas", "cualquier cosa"));
-        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje con mascotas", "cualquier cosa"));
-        UserRolSelect user = new UserRolSelect("10", generitToUserRolWeatherOrCategoryList);
+        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como Mochilero", "cualquier cosa"));
+        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje en pareja", "cualquier cosa"));
+        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como turist", "cualquier cosa"));UserRolSelect user = new UserRolSelect("10", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
