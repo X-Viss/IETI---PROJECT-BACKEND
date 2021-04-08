@@ -1,15 +1,20 @@
 package com.eci.ieti.controller;
 
+import com.eci.ieti.configuration.JwtUtils;
 import com.eci.ieti.model.AutenticationResponse;
 import com.eci.ieti.model.AuthenticationRequest;
 import com.eci.ieti.model.UserModel;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
+import com.eci.ieti.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +30,18 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
+    private JwtUtils jwtlUtils;
+
+    @Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @GetMapping( value = "/dashboard")
+    public String testingToken () {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
 
     @RequestMapping( value = "/subs")
     public ResponseEntity<AutenticationResponse> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
@@ -52,6 +68,9 @@ public class AuthController {
         } catch (Exception e) {
             return ResponseEntity.ok(new AutenticationResponse("Error during Authentication"+ userName));
         }
+
+        UserDetails loadedUser = userService.loadUserByUsername(userName);
+        jwtlUtils.generateToken(loadedUser);
         return ResponseEntity.ok(new AutenticationResponse("Succesful Authentication for client "+ userName));   
     }
 }
