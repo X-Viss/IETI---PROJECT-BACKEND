@@ -24,14 +24,13 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @RequestMapping( value = "/auth")
-    public ResponseEntity<AutenticationResponse> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
+    @RequestMapping( value = "/subs")
+    public ResponseEntity<?> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
         String password = authenticationRequest.getPassword();
         UserModel user = new UserModel();
         user.setUserName(userName);
         user.setPassword(password);
-        userRepository.save(user);
         try {
             userRepository.save(user);
         } catch (Exception e) {
@@ -40,14 +39,14 @@ public class AuthController {
         return ResponseEntity.ok(new AutenticationResponse("Succesful subscription for client "+ userName));
     }
 
-    @PostMapping( value = "/subs")
-    public ResponseEntity<AutenticationResponse> authenticateClient(@RequestBody AuthenticationRequest authenticationRequest) {
+    @PostMapping( value = "/auth")
+    public ResponseEntity<?> authenticateClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
         String password = authenticationRequest.getPassword();
 
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, password));    
-        } catch (BadCredentialsException e) {
+        } catch (Exception e) {
             return ResponseEntity.ok(new AutenticationResponse("Error during Authentication"+ userName));
         }
         return ResponseEntity.ok(new AutenticationResponse("Succesful Authentication for client "+ userName));   
