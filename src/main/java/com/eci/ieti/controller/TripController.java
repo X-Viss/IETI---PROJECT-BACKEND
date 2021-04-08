@@ -21,7 +21,8 @@ public class TripController {
   }
 
   @GetMapping("/{nametrip}")
-  public Trip getTrip(@PathVariable String nametrip) {
+  public List<Trip> getTypeTrip(@PathVariable String nametrip) {
     return tripServices.getFindByTrip(nametrip);
   }
+
 }

@@ -16,7 +16,7 @@ public class TripServices {
     return tripRepository.findAll();
   }
 
-  public Trip getFindByTrip(String id) {
-    return tripRepository.findById(id).orElse(Trip.builder().build());
+  public List<Trip> getFindByTrip(String nametrip) {
+    return tripRepository.findByNametrip(nametrip);
   }
 }
