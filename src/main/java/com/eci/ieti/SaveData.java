@@ -15,10 +15,6 @@ public class SaveData implements CommandLineRunner {
     @Autowired
     WeatherCategoryRolRepository weatherCategoryRolRepository;
 
-    public static void main(String[] args) {
-        SpringApplication.run(SaveData.class, args);
-    }
-
     @Override
     public void run(String... args) throws Exception {
         invierno();
