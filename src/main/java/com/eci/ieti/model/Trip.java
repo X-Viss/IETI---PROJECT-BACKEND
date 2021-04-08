@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Trip")
 public class Trip {
     @Id
+    int id;
     String nametrip;
     String description;
     Image image;

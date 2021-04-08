@@ -12,16 +12,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TripTest {
-  @Autowired private MockMvc mockMvc;
+class StatTest {
+    @Autowired
+    private MockMvc mockMvc;
 
-  @Test
-  void getTrips() throws Exception {
-    mockMvc.perform(get("/Trips")).andDo(print()).andExpect(status().isOk());
-  }
-
-  @Test
-  void getTypeTrip() throws Exception {
-    mockMvc.perform(get("/Trips/Adventure")).andDo(print()).andExpect(status().isOk());
-  }
+    @Test
+    void getAmountTrips() throws Exception {
+        mockMvc.perform(get("/Statisctics")).andDo(print()).andExpect(status().isOk());
+    }
 }

@@ -1,6 +1,8 @@
 package com.eci.ieti.controller;
 
+import com.eci.ieti.model.Image;
 import com.eci.ieti.model.Trip;
+import com.eci.ieti.persistence.repository.TripRepository;
 import com.eci.ieti.services.TripServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,8 @@ public class TripController {
   }
 
   @GetMapping("/{nametrip}")
-  public Trip getTrip(@PathVariable String nametrip) {
+  public List<Trip> getTypeTrip(@PathVariable String nametrip) {
     return tripServices.getFindByTrip(nametrip);
   }
+
 }
