@@ -243,25 +243,33 @@ public class CustomRepositoryImpl implements CustomRepository {
                                         WeatherCategoryRol backpacker, WeatherCategoryRol tourist) {
         List<String> res = new ArrayList<>();
         if (weatherName.equals("Primavera")) {
-            for (String data : wetherList.getSpringClothes()) {
-                res.add(data);
-            }
-        } else if (weatherName.equals("Verano")) {
-            for (String data : wetherList.getSummerClothes()) {
-                if (!res.contains(data)) {
+            if(wetherList.getSpringAccesories()!=null) {
+                for (String data : wetherList.getSpringClothes()) {
                     res.add(data);
                 }
             }
+        } else if (weatherName.equals("Verano")) {
+            if(wetherList.getSummerAccesories()!=null) {
+                for (String data : wetherList.getSummerClothes()) {
+                    if (!res.contains(data)) {
+                        res.add(data);
+                    }
+                }
+            }
         } else if (weatherName.equals("Otoño")) {
-            for (String data : wetherList.getAutumnClothes()) {
-                if (!res.contains(data)) {
-                    res.add(data);
+            if(wetherList.getAutumnAccesories()!=null) {
+                for (String data : wetherList.getAutumnClothes()) {
+                    if (!res.contains(data)) {
+                        res.add(data);
+                    }
                 }
             }
         } else {
             for (String data : wetherList.getWinterClothes()) {
-                if (!res.contains(data)) {
-                    res.add(data);
+                if (wetherList.getWinterAccesories() != null) {
+                    if (!res.contains(data)) {
+                        res.add(data);
+                    }
                 }
             }
         }
@@ -310,25 +318,33 @@ public class CustomRepositoryImpl implements CustomRepository {
 
         List<String> res = new ArrayList<>();
         if (weatherName.equals("Primavera")) {
-            for (String data : wetherList.getSpringAccesories()) {
-                res.add(data);
+            if(wetherList.getSpringAccesories()!=null) {
+                for (String data : wetherList.getSpringAccesories()) {
+                    res.add(data);
+                }
             }
         } else if (weatherName.equals("Verano")) {
-            for (String data : wetherList.getSummerAccesories()) {
-                if (!res.contains(data)) {
-                    res.add(data);
+            if(wetherList.getSummerAccesories()!=null) {
+                for (String data : wetherList.getSummerAccesories()) {
+                    if (!res.contains(data)) {
+                        res.add(data);
+                    }
                 }
             }
         } else if (weatherName.equals("Otoño")) {
-            for (String data : wetherList.getAutumnAccesories()) {
-                if (!res.contains(data)) {
-                    res.add(data);
+            if(wetherList.getAutumnAccesories()!=null) {
+                for (String data : wetherList.getAutumnAccesories()) {
+                    if (!res.contains(data)) {
+                        res.add(data);
+                    }
                 }
             }
         } else {
-            for (String data : wetherList.getWinterAccesories()) {
-                if (!res.contains(data)) {
-                    res.add(data);
+            if (wetherList.getWinterAccesories() != null) {
+                for (String data : wetherList.getWinterAccesories()) {
+                    if (!res.contains(data)) {
+                        res.add(data);
+                    }
                 }
             }
         }
