@@ -483,7 +483,8 @@ public class TravelControllerTest {
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje con mascotas", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como Mochilero", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje en pareja", "cualquier cosa"));
-        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como turista", "cualquier cosa"));UserRolSelect user = new UserRolSelect("10", generitToUserRolWeatherOrCategoryList);
+        generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como turista", "cualquier cosa"));
+        UserRolSelect user = new UserRolSelect("11", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
