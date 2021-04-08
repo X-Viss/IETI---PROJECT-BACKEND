@@ -1,6 +1,8 @@
 package com.eci.ieti;
 
-import com.eci.ieti.model.User;
+import java.util.Date;
+
+import com.eci.ieti.model.UserModel;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 
@@ -23,28 +25,30 @@ public class BaseDatosTest {
 
     @Test
     public void insertData() {
-        User user = new User("Prueba", "123");
+        Date date = new Date();
+        UserModel user = new UserModel("prueba@mail.com","Prueba", "123", 314250,date);
         customRepository.createUser(user);
-        User var = customRepository.getName("Prueba");
-        Assertions.assertEquals("123", var.getpassword());
+        UserModel var = customRepository.getName("Prueba");
+        Assertions.assertEquals("123", var.getPassword());
     }
 
     @Test
     public void userRepo(){
-        User userG = new User("Luisa","321");
+        Date date = new Date();
+        UserModel userG = new UserModel("luisa@mail.com","Luisa","321", 314250,date);
         customRepository.createUser(userG);
-        User var = userRepository.findByUserName("Luisa");
-        Assertions.assertEquals("321", var.getpassword());
+        UserModel var = userRepository.findByUserName("Luisa");
+        Assertions.assertEquals("321", var.getPassword());
     }
 
     @Test
     public void insertUser(){
-        User userG = new User();
+        UserModel userG = new UserModel();
         userG.setUserName("Luisa2");
-        userG.setpassword("321");
+        userG.setPassword("321");
         customRepository.createUser(userG);
-        User var = userRepository.findByUserName("Luisa2");
-        Assertions.assertEquals("321", var.getpassword());
+        UserModel var = userRepository.findByUserName("Luisa2");
+        Assertions.assertEquals("321", var.getPassword());
     }
 
 }
