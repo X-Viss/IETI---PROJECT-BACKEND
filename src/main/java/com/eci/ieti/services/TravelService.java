@@ -2,6 +2,7 @@ package com.eci.ieti.services;
 
 import com.eci.ieti.exceptions.TravelException;
 import com.eci.ieti.model.Country;
+import com.eci.ieti.model.ListCategories;
 import com.eci.ieti.model.Travel;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public interface TravelService {
 
     public void putDestinyByUserRolSelected(Country destiny, String id);
 
-    public void putWeahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id);
+    public ListCategories putWeahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id);
 
     public void putAccessoriesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> accessories, String id);
 

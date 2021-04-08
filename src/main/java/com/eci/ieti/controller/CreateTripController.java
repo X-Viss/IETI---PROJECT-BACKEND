@@ -31,8 +31,7 @@ public class CreateTripController {
 
     @PutMapping(value = "weather")
     public ResponseEntity<?> putWeatherByUserRolSelected(@RequestBody List<GeneritToUserRolWeatherOrCategory> weatherList, @RequestParam("id") String id) {
-        travelService.putWeahterByUserRolSelected(weatherList, id);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(travelService.putWeahterByUserRolSelected(weatherList, id),HttpStatus.ACCEPTED);
     }
 
     @PutMapping(value = "category/accessories")

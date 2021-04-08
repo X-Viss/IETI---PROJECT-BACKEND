@@ -1,6 +1,7 @@
 package com.eci.ieti.persistence.repository;
 
 import com.eci.ieti.model.Country;
+import com.eci.ieti.model.ListCategories;
 import com.eci.ieti.model.User;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 
@@ -15,7 +16,7 @@ public interface CustomRepository{
 
     public void putDestinyByUserRolSelected(Country destiny, String id);
 
-    public void weahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id);
+    public ListCategories weahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id);
 
     public void accessoriesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> accessories, String id);
 

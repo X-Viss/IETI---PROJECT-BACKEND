@@ -3,6 +3,7 @@ package com.eci.ieti.services.impl;
 import com.eci.ieti.exceptions.persistence.TravelPersistenceException;
 import com.eci.ieti.model.Country;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
+import com.eci.ieti.model.ListCategories;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.services.TravelService;
 import com.eci.ieti.exceptions.TravelException;
@@ -44,8 +45,8 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public void putWeahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id) {
-        customRepositoryImpl.weahterByUserRolSelected(weatherList, id);
+    public ListCategories putWeahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id) {
+        return customRepositoryImpl.weahterByUserRolSelected(weatherList, id);
     }
 
     @Override
