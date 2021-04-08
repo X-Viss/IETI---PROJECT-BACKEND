@@ -382,13 +382,13 @@ public class TravelControllerTest {
 
     @Test
     public void shouldBePassAllWeather() throws Exception {
-        List<String> salud = null;
+        List<String> salud = new ArrayList<>();
         WeatherCategoryRol weatherCategoryRol = new WeatherCategoryRol();
         weatherCategoryRol.setId("Salud");
         weatherCategoryRol.setHealth(salud);
         weatherCategoryRolRepository.save(weatherCategoryRol);
 
-        List<String> aseo = null;
+        List<String> aseo = new ArrayList<>();
         WeatherCategoryRol weatherCategoryRol2 = new WeatherCategoryRol();
         weatherCategoryRol2.setId("Aseo");
         weatherCategoryRol2.setCleanness(aseo);
