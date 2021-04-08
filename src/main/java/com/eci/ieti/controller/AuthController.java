@@ -8,8 +8,8 @@ import com.eci.ieti.persistence.repository.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +24,13 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @RequestMapping( value = "/subs")
-    public ResponseEntity<?> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
+    public ResponseEntity<AutenticationResponse> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
-        String password = authenticationRequest.getPassword();
+        String password = bCryptPasswordEncoder.encode(authenticationRequest.getPassword());
         UserModel user = new UserModel();
         user.setUserName(userName);
         user.setPassword(password);
@@ -40,7 +43,7 @@ public class AuthController {
     }
 
     @PostMapping( value = "/auth")
-    public ResponseEntity<?> authenticateClient(@RequestBody AuthenticationRequest authenticationRequest) {
+    public ResponseEntity<AutenticationResponse> authenticateClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
         String password = authenticationRequest.getPassword();
 
