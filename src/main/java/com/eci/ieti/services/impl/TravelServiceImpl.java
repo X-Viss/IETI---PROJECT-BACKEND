@@ -3,6 +3,7 @@ package com.eci.ieti.services.impl;
 import com.eci.ieti.exceptions.persistence.TravelPersistenceException;
 import com.eci.ieti.services.TravelService;
 import com.eci.ieti.exceptions.TravelException;
+import com.eci.ieti.model.Question;
 import com.eci.ieti.model.Travel;
 import com.eci.ieti.persistence.TravelPersistenceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,11 @@ public class TravelServiceImpl implements TravelService {
         } catch (TravelPersistenceException e) {
             throw new TravelException(e.getMessage(), e);
         }
+    }
+
+    @Override
+    public List<Question> getFAQ() throws TravelException {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
