@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "api/travels")
@@ -24,7 +22,7 @@ public class TravelController {
      * @return List of travels of the user
      */
     @GetMapping
-    public ResponseEntity<?> getTravels(@RequestParam("user") String user){
+    public ResponseEntity<Object> getTravels(@RequestParam("user") String user){
         try {
             return new ResponseEntity<>(travelService.getUserTravels(user), HttpStatus.OK);
         } catch (TravelException e) {

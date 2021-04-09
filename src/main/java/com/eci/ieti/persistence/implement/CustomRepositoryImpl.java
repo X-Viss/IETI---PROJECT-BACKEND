@@ -1,6 +1,6 @@
 package com.eci.ieti.persistence.implement;
 
-import com.eci.ieti.model.User;
+import com.eci.ieti.model.UserModel;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 
@@ -14,13 +14,24 @@ public class CustomRepositoryImpl implements CustomRepository{
     UserRepository userRepository;
 
     @Override
-    public void createUser(User user) {
+    public void createUser(UserModel user) {
         userRepository.insert(user);        
     }    
     
     @Override
-    public User getName(String name) {
+    public UserModel getName(String name) {
         return userRepository.findByUserName(name);
-    }    
+    }
+
+    @Override
+    public void updateUser(String name, String email, String password, Integer phone) {
+        UserModel user = userRepository.findByUserName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setPhone(phone);
+        userRepository.save(user);         
+    }
+
     
+
 }

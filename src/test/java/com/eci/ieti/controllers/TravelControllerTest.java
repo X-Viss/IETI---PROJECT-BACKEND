@@ -1,8 +1,7 @@
 package com.eci.ieti.controllers;
 
 
-import com.eci.ieti.model.User;
-import com.eci.ieti.persistence.repository.repo.TravelRepository;
+import com.eci.ieti.model.UserModel;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -24,29 +22,26 @@ public class TravelControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private TravelRepository travelRepository;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Test
     public void getTravelsShouldExist() throws Exception {
-        User user = new User();
+        UserModel user = new UserModel();
         user.setUserName("david");
-        user.setpassword("123456joke");
+        user.setPassword("123456joke");
         userRepository.save(user);
         mockMvc.perform(get("/api/travels?user=david")).andDo(print()).andExpect(status().isOk());
 
 
-        User user2 = new User();
+        UserModel user2 = new UserModel();
         user2.setUserName("jose");
-        user2.setpassword("123456joke");
+        user2.setPassword("123456joke");
         userRepository.save(user2);
         mockMvc.perform(get("/api/travels?user=jose")).andDo(print()).andExpect(status().isOk());
 
-        User user3 = new User();
+        UserModel user3 = new UserModel();
         user3.setUserName("pepito");
-        user3.setpassword("123456joke");
+        user3.setPassword("123456joke");
         userRepository.save(user3);
         mockMvc.perform(get("/api/travels?user=pepito")).andDo(print()).andExpect(status().isOk());
     }
@@ -65,11 +60,11 @@ public class TravelControllerTest {
 
     @Test
     public void getTravelShouldBeEmpty() throws Exception {
-        User user = new User();
+        UserModel user = new UserModel();
         user.setUserName("davinchi");
-        user.setpassword("123456joke");
+        user.setPassword("123456joke");
         userRepository.save(user);
-        ResultActions result = mockMvc.perform(get("/api/travels?user=davinchi")).andDo(print()).andExpect(status().isOk()).andExpect(
+        mockMvc.perform(get("/api/travels?user=davinchi")).andDo(print()).andExpect(status().isOk()).andExpect(
                 content().json("[]")
         );
     }
