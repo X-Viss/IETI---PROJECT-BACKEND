@@ -6,19 +6,26 @@ import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+@Service
 public class JwtUtils {
     private static final String SECRET_KEY = "secret";
+    private String tokenString = null;
 
     public String generateToken(UserDetails userDetails){
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.getUsername());
+        tokenString = createToken(claims, userDetails.getUsername());
+        return tokenString;
     }
 
+    public String getTokenString(){
+        return tokenString;
+    }
 
     public Boolean validateToken(String token, UserDetails userDetails){
     String userName = extractUsernane(token);

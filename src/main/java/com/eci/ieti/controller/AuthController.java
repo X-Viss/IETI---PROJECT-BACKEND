@@ -17,7 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -40,21 +39,23 @@ public class AuthController {
 
     @GetMapping( value = "/dashboard")
     public String testingToken () {
-        return SecurityContextHolder.getContext().getAuthentication().getName();
+        return SecurityContextHolder.getContext().getAuthentication().getCredentials().toString();
     }
 
-    @RequestMapping( value = "/subs")
+    @PostMapping( value = "/subs")
     public ResponseEntity<AutenticationResponse> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
         String password = bCryptPasswordEncoder.encode(authenticationRequest.getPassword());
         UserModel user = new UserModel();
         user.setUserName(userName);
         user.setPassword(password);
-        try {
+        
+        if(userRepository.findByUserName(userName)==null){
             userRepository.save(user);
-        } catch (Exception e) {
-            return ResponseEntity.ok(new AutenticationResponse("Error during client subscription "+ userName));    
+        } else{
+            return ResponseEntity.badRequest().body(new AutenticationResponse("Error exists client subscription"));
         }
+        
         return ResponseEntity.ok(new AutenticationResponse("Succesful subscription for client "+ userName));
     }
 
@@ -66,7 +67,7 @@ public class AuthController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, password));    
         } catch (Exception e) {
-            return ResponseEntity.ok(new AutenticationResponse("Error during Authentication"+ userName));
+            return ResponseEntity.badRequest().body(new AutenticationResponse("Error during Authentication "+ userName));
         }
 
         UserDetails loadedUser = userService.loadUserByUsername(userName);

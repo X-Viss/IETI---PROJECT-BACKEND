@@ -36,6 +36,7 @@ public class UserModel {
 
     public void setEmail(String email) {
         this.email = email;
+        this.userName = email;
     }
 
     public String getPassword() {
@@ -64,6 +65,7 @@ public class UserModel {
 
     public void setUserName(String userName) {
         this.userName = userName;
+        this.email = userName;
     }
 
 }

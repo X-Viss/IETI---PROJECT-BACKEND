@@ -51,4 +51,18 @@ public class BaseDatosTest {
         Assertions.assertEquals("321", var.getPassword());
     }
 
+    @Test
+    public void updateUser(){
+        Date date = new Date();
+        UserModel userG = new UserModel("andres@mail.com","andres","321", 314250,date);
+        customRepository.createUser(userG);
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println(customRepository.getName("andres"));
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        customRepository.updateUser("andres", "andres@mail.com", "341", 310753);
+        UserModel var = customRepository.getName("andres@mail.com");
+        Assertions.assertEquals("341", var.getPassword());
+    }
+    
+
 }
