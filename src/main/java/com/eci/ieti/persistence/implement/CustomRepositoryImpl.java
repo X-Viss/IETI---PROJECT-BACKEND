@@ -29,9 +29,7 @@ public class CustomRepositoryImpl implements CustomRepository{
         user.setEmail(email);
         user.setPassword(password);
         user.setPhone(phone);
-
-
-        
+        userRepository.save(user);         
     }
 
     
