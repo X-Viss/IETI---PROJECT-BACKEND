@@ -15,17 +15,22 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.eci.ieti.persistence.repository.repo.UserRepository;
+
 
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class Security {
+public class SecurityTest {
 
     @Autowired
     private MockMvc mockMvc;
-    
+
+    @Autowired
+    UserRepository userRepository;
+
     @Test
     public void Autenticated()throws Exception{
         MvcResult mvcResult = mockMvc.perform(post("/subs").contentType("application/json")
@@ -36,13 +41,14 @@ public class Security {
         Assertions.assertEquals("{\"response\":\"Succesful subscription for client Luisa\"}",mvcResult.getResponse().getContentAsString());
     }
 
+    @Test
     public void authenticateClient() throws Exception{
         mockMvc.perform(post("/subs").contentType("application/json")
         .content("{\"userName\" : \"Luisa\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
-        MvcResult mvcResult2 = mockMvc.perform(post("/subs").contentType("application/json")
+        MvcResult mvcResult2 = mockMvc.perform(post("/auth").contentType("application/json")
         .content("{\"userName\" : \"Luisa\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
@@ -50,4 +56,29 @@ public class Security {
         Assertions.assertEquals("{\"response\":\"Succesful Authentication for client Luisa\"}",mvcResult2.getResponse().getContentAsString());
     }
 
+    @Test
+    public void NotAutenticated()throws Exception{
+        
+        mockMvc.perform(post("/subs").contentType("application/json")
+        .content("{\"userName\" : \"Luisaa\",\"password\" : \"pssw\"}"))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andReturn();
+
+        mockMvc.perform(post("/subs").contentType("application/json")
+        .content("{\"userName\" : \"Luisaa\",\"password\" : \"pssw\"}"))
+        .andDo(print())
+        .andExpect(status().isBadRequest())
+        .andReturn();
+    }
+
+    @Test
+    public void notAuthenticateClient() throws Exception{
+        MvcResult mvcResult2 = mockMvc.perform(post("/auth").contentType("application/json")
+        .content("{\"userName\" : \"Maria\",\"password\" : \"psw\"}"))
+        .andDo(print())
+        .andExpect(status().isBadRequest())
+        .andReturn();
+        Assertions.assertEquals("{\"response\":\"Error during Authentication Maria\"}",mvcResult2.getResponse().getContentAsString());
+    }
 }

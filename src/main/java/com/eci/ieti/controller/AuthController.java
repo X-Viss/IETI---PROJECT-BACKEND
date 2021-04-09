@@ -28,17 +28,19 @@ public class AuthController {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @RequestMapping( value = "/subs")
-    public ResponseEntity<AutenticationResponse> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
+    public ResponseEntity<Object> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
         String password = bCryptPasswordEncoder.encode(authenticationRequest.getPassword());
         UserModel user = new UserModel();
         user.setUserName(userName);
         user.setPassword(password);
-        try {
+        
+        if(userRepository.findByUserName(userName)==null){
             userRepository.save(user);
-        } catch (Exception e) {
-            return ResponseEntity.ok(new AutenticationResponse("Error during client subscription "+ userName));    
+        } else{
+            return ResponseEntity.badRequest().body(new AutenticationResponse("Error exists client subscription"));
         }
+        
         return ResponseEntity.ok(new AutenticationResponse("Succesful subscription for client "+ userName));
     }
 
@@ -50,7 +52,7 @@ public class AuthController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, password));    
         } catch (Exception e) {
-            return ResponseEntity.ok(new AutenticationResponse("Error during Authentication"+ userName));
+            return ResponseEntity.badRequest().body(new AutenticationResponse("Error during Authentication "+ userName));
         }
         return ResponseEntity.ok(new AutenticationResponse("Succesful Authentication for client "+ userName));   
     }
