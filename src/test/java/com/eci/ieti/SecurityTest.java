@@ -44,16 +44,16 @@ public class SecurityTest {
     @Test
     public void authenticateClient() throws Exception{
         mockMvc.perform(post("/subs").contentType("application/json")
-        .content("{\"userName\" : \"Luisa\",\"password\" : \"psw\"}"))
+        .content("{\"userName\" : \"Felipe\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
         MvcResult mvcResult2 = mockMvc.perform(post("/auth").contentType("application/json")
-        .content("{\"userName\" : \"Luisa\",\"password\" : \"psw\"}"))
+        .content("{\"userName\" : \"Felipe\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
-        Assertions.assertEquals("{\"response\":\"Succesful Authentication for client Luisa\"}",mvcResult2.getResponse().getContentAsString());
+        Assertions.assertEquals("{\"response\":\"Succesful Authentication for client Felipe\"}",mvcResult2.getResponse().getContentAsString());
     }
 
     @Test
