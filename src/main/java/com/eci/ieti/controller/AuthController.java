@@ -38,8 +38,8 @@ public class AuthController {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping( value = "/dashboard")
-    public String testingToken () {
-        return SecurityContextHolder.getContext().getAuthentication().getCredentials().toString();
+    public ResponseEntity<AutenticationResponse> testingToken () {
+        return ResponseEntity.ok(new AutenticationResponse(SecurityContextHolder.getContext().getAuthentication().getName()));
     }
 
     @PostMapping( value = "/subs")
