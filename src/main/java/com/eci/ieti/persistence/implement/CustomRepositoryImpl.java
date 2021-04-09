@@ -155,11 +155,11 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        List<String> accesoriesList = compareAccesories(weatherName, wetherList, health, cleanness, onHand, pets, work, couple, backpacker, tourist);
-        List<String> clothesList = compareClothes(weatherName, wetherList, health, cleanness, onHand, pets, work, couple, backpacker, tourist);
-        List<String> cleannessList = compareCleanness(weatherName, wetherList, health, cleanness, onHand, pets, work, couple, backpacker, tourist);
-        List<String> healthList = compareHealth(weatherName, wetherList, health, cleanness, onHand, pets, work, couple, backpacker, tourist);
-        List<String> onHandList = compareOnHand(weatherName, wetherList, health, cleanness, onHand, pets, work, couple, backpacker, tourist);
+        List<String> accesoriesList = compareAccesories(weatherName, wetherList, pets, work, couple, backpacker, tourist);
+        List<String> clothesList = compareClothes(weatherName, wetherList, pets, work, backpacker, tourist);
+        List<String> cleannessList = compareCleanness(cleanness);
+        List<String> healthList = compareHealth(health, work);
+        List<String> onHandList = compareOnHand(onHand, pets, work);
         listCategories.setAccesoriesList(accesoriesList);
         listCategories.setClothesList(clothesList);
         listCategories.setOnHandList(onHandList);
@@ -169,11 +169,8 @@ public class CustomRepositoryImpl implements CustomRepository {
         return listCategories;
     }
 
-    private List<String> compareOnHand(String weatherName, WeatherCategoryRol wetherList,
-                                       WeatherCategoryRol health, WeatherCategoryRol cleanness,
-                                       WeatherCategoryRol onHand, WeatherCategoryRol pets,
-                                       WeatherCategoryRol work, WeatherCategoryRol couple,
-                                       WeatherCategoryRol backpacker, WeatherCategoryRol tourist) {
+    private List<String> compareOnHand(WeatherCategoryRol onHand, WeatherCategoryRol pets,
+                                       WeatherCategoryRol work) {
         List<String> res = new ArrayList<>();
 
         for (String data : onHand.getOnHand()) {
@@ -181,7 +178,7 @@ public class CustomRepositoryImpl implements CustomRepository {
 
         }
 
-        if(pets!=null) {
+        if (pets != null) {
             for (String data : pets.getPetsOnHand()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -189,7 +186,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(work!=null) {
+        if (work != null) {
             for (String data : work.getWorkOnHand()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -200,18 +197,14 @@ public class CustomRepositoryImpl implements CustomRepository {
 
     }
 
-    private List<String> compareHealth(String weatherName, WeatherCategoryRol wetherList,
-                                       WeatherCategoryRol health, WeatherCategoryRol cleanness,
-                                       WeatherCategoryRol onHand, WeatherCategoryRol pets,
-                                       WeatherCategoryRol work, WeatherCategoryRol couple,
-                                       WeatherCategoryRol backpacker, WeatherCategoryRol tourist) {
+    private List<String> compareHealth(WeatherCategoryRol health, WeatherCategoryRol work) {
         List<String> res = new ArrayList<>();
 
         for (String data : health.getHealth()) {
             res.add(data);
         }
 
-        if(work!=null) {
+        if (work != null) {
             for (String data : work.getWorkHealth()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -223,11 +216,7 @@ public class CustomRepositoryImpl implements CustomRepository {
 
     }
 
-    private List<String> compareCleanness(String weatherName, WeatherCategoryRol wetherList,
-                                          WeatherCategoryRol health, WeatherCategoryRol cleanness,
-                                          WeatherCategoryRol onHand, WeatherCategoryRol pets,
-                                          WeatherCategoryRol work, WeatherCategoryRol couple,
-                                          WeatherCategoryRol backpacker, WeatherCategoryRol tourist) {
+    private List<String> compareCleanness(WeatherCategoryRol cleanness) {
 
         List<String> res = new ArrayList<>();
         for (String data : cleanness.getCleanness()) {
@@ -237,44 +226,35 @@ public class CustomRepositoryImpl implements CustomRepository {
     }
 
     private List<String> compareClothes(String weatherName, WeatherCategoryRol wetherList,
-                                        WeatherCategoryRol health, WeatherCategoryRol cleanness,
-                                        WeatherCategoryRol onHand, WeatherCategoryRol pets,
-                                        WeatherCategoryRol work, WeatherCategoryRol couple,
+                                        WeatherCategoryRol pets, WeatherCategoryRol work,
                                         WeatherCategoryRol backpacker, WeatherCategoryRol tourist) {
         List<String> res = new ArrayList<>();
-        if (weatherName.equals("Primavera")) {
-            if(wetherList.getSpringClothes()!=null) {
-                for (String data : wetherList.getSpringClothes()) {
+        if (weatherName.equals("Primavera") && wetherList.getSpringClothes() != null) {
+            for (String data : wetherList.getSpringClothes()) {
+                res.add(data);
+            }
+
+        } else if (weatherName.equals("Verano") && wetherList.getSummerClothes() != null) {
+            for (String data : wetherList.getSummerClothes()) {
+                if (!res.contains(data)) {
                     res.add(data);
                 }
             }
-        } else if (weatherName.equals("Verano")) {
-            if(wetherList.getSummerClothes()!=null) {
-                for (String data : wetherList.getSummerClothes()) {
-                    if (!res.contains(data)) {
-                        res.add(data);
-                    }
-                }
-            }
-        } else if (weatherName.equals("Otoño")) {
-            if(wetherList.getAutumnClothes()!=null) {
-                for (String data : wetherList.getAutumnClothes()) {
-                    if (!res.contains(data)) {
-                        res.add(data);
-                    }
+        } else if (weatherName.equals("Otoño") && wetherList.getAutumnClothes() != null) {
+            for (String data : wetherList.getAutumnClothes()) {
+                if (!res.contains(data)) {
+                    res.add(data);
                 }
             }
         } else {
             for (String data : wetherList.getWinterClothes()) {
-                if (wetherList.getWinterClothes() != null) {
-                    if (!res.contains(data)) {
-                        res.add(data);
-                    }
+                if (wetherList.getWinterClothes() != null && !res.contains(data)) {
+                    res.add(data);
                 }
             }
         }
 
-        if(pets!=null) {
+        if (pets != null) {
             for (String data : pets.getPetsClothes()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -282,7 +262,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(work!=null) {
+        if (work != null) {
             for (String data : work.getWorkClothes()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -290,7 +270,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(backpacker!=null) {
+        if (backpacker != null) {
             for (String data : backpacker.getBackpackerClothes()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -298,7 +278,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(tourist!=null) {
+        if (tourist != null) {
             for (String data : tourist.getTouristClothes()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -310,33 +290,25 @@ public class CustomRepositoryImpl implements CustomRepository {
 
     }
 
-    public List<String> compareAccesories(String weatherName, WeatherCategoryRol wetherList,
-                                          WeatherCategoryRol health, WeatherCategoryRol cleanness,
-                                          WeatherCategoryRol onHand, WeatherCategoryRol pets,
+    public List<String> compareAccesories(String weatherName, WeatherCategoryRol wetherList, WeatherCategoryRol pets,
                                           WeatherCategoryRol work, WeatherCategoryRol couple,
                                           WeatherCategoryRol backpacker, WeatherCategoryRol tourist) {
 
         List<String> res = new ArrayList<>();
-        if (weatherName.equals("Primavera")) {
-            if(wetherList.getSpringAccesories()!=null) {
+        if (weatherName.equals("Primavera") && wetherList.getSpringAccesories() != null) {
                 for (String data : wetherList.getSpringAccesories()) {
                     res.add(data);
-                }
             }
-        } else if (weatherName.equals("Verano")) {
-            if(wetherList.getSummerAccesories()!=null) {
+        } else if (weatherName.equals("Verano") && wetherList.getSummerAccesories() != null) {
                 for (String data : wetherList.getSummerAccesories()) {
                     if (!res.contains(data)) {
                         res.add(data);
                     }
-                }
             }
-        } else if (weatherName.equals("Otoño")) {
-            if(wetherList.getAutumnAccesories()!=null) {
+        } else if (weatherName.equals("Otoño") && wetherList.getAutumnAccesories() != null) {
                 for (String data : wetherList.getAutumnAccesories()) {
                     if (!res.contains(data)) {
                         res.add(data);
-                    }
                 }
             }
         } else {
@@ -349,7 +321,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(pets!=null) {
+        if (pets != null) {
             for (String data : pets.getPetsAccesories()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -357,7 +329,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(work!=null) {
+        if (work != null) {
             for (String data : work.getWorkAccesories()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -365,7 +337,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(couple!=null) {
+        if (couple != null) {
             for (String data : couple.getCoupleAcceosires()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -373,7 +345,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(backpacker!=null) {
+        if (backpacker != null) {
             for (String data : backpacker.getBackpackerAccesories()) {
                 if (!res.contains(data)) {
                     res.add(data);
@@ -381,7 +353,7 @@ public class CustomRepositoryImpl implements CustomRepository {
             }
         }
 
-        if(tourist!=null) {
+        if (tourist != null) {
             for (String data : tourist.getTouristAccesories()) {
                 if (!res.contains(data)) {
                     res.add(data);

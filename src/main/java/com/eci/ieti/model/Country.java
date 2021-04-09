@@ -2,7 +2,7 @@ package com.eci.ieti.model;
 
 public class Country {
 
-    String country;
+    private String country;
 
     public Country(){}
 
