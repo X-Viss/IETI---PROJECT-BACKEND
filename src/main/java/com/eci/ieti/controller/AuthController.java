@@ -39,7 +39,12 @@ public class AuthController {
 
     @GetMapping( value = "/dashboard")
     public ResponseEntity<AutenticationResponse> testingToken () {
-        return ResponseEntity.ok(new AutenticationResponse(SecurityContextHolder.getContext().getAuthentication().getName()));
+        if (SecurityContextHolder.getContext().getAuthentication().getName() != null){
+            return ResponseEntity.ok(new AutenticationResponse(SecurityContextHolder.getContext().getAuthentication().getName()));
+        }else{
+            return ResponseEntity.badRequest().body(new AutenticationResponse("Error during Client Authentication"));
+        }
+        
     }
 
     @PostMapping( value = "/subs")

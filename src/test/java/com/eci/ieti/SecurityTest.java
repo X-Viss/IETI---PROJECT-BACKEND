@@ -105,4 +105,26 @@ public class SecurityTest {
         Assertions.assertEquals("{\"response\":\"yesid\"}", mvcResult.getResponse().getContentAsString());
         
     }
+
+    @Test
+    public void notAuthenticateClientToken() throws Exception{
+        mockMvc.perform(post("/subs").contentType("application/json")
+        .content("{\"userName\" : \"alex\",\"password\" : \"psw\"}"))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andReturn();
+        
+        mockMvc.perform(post("/auth").contentType("application/json")
+        .content("{\"userName\" : \"alex\",\"password\" : \"psw\"}"))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andReturn();
+
+        mockMvc
+        .perform(get("/dashboard").header("Authorization", "Bearerr "+jwtlUtils.getTokenString()))
+        .andDo(print())
+        .andExpect(status().isForbidden())
+        .andReturn();
+
+    }
 }
