@@ -2,15 +2,14 @@ package com.eci.ieti.persistence.repository;
 
 import com.eci.ieti.model.Country;
 import com.eci.ieti.model.ListCategories;
-import com.eci.ieti.model.User;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
-
 import java.util.List;
+import com.eci.ieti.model.UserModel;
 
 public interface CustomRepository{
-
-    public void createUser(User user);
-    public User getName(String name);
+    public void createUser(UserModel user);
+    public UserModel getName(String name);
+    public void updateUser(String name,String email, String password, Integer phone);
 
     public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList);
 

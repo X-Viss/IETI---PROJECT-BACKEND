@@ -24,12 +24,12 @@ public class CustomRepositoryImpl implements CustomRepository {
     WeatherCategoryRolRepository weatherCategoryRolRepository;
 
     @Override
-    public void createUser(User user) {
-        userRepository.insert(user);
-    }
-
+    public void createUser(UserModel user) {
+        userRepository.insert(user);        
+    }    
+    
     @Override
-    public User getName(String name) {
+    public UserModel getName(String name) {
         return userRepository.findByUserName(name);
     }
 
@@ -364,4 +364,14 @@ public class CustomRepositoryImpl implements CustomRepository {
         return res;
 
     }
+    public void updateUser(String name, String email, String password, Integer phone) {
+        UserModel user = userRepository.findByUserName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setPhone(phone);
+        userRepository.save(user);         
+    }
+
+    
+
 }

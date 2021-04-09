@@ -22,7 +22,7 @@ public class TravelController {
      * @return List of travels of the user
      */
     @GetMapping
-    public ResponseEntity<?> getTravels(@RequestParam("user") String user){
+    public ResponseEntity<Object> getTravels(@RequestParam("user") String user){
         try {
             return new ResponseEntity<>(travelService.getUserTravels(user), HttpStatus.OK);
         } catch (TravelException e) {

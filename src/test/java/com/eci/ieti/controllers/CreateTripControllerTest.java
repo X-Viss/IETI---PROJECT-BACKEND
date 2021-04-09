@@ -1,5 +1,6 @@
 package com.eci.ieti.controllers;
 
+import com.eci.ieti.configuration.JwtUtils;
 import com.eci.ieti.model.*;
 import com.eci.ieti.persistence.repository.repo.UserRolRepository;
 import com.eci.ieti.persistence.repository.repo.WeatherCategoryRolRepository;
@@ -30,18 +31,23 @@ class CreateTripControllerTest {
     @Autowired
     private WeatherCategoryRolRepository weatherCategoryRolRepository;
 
+    @Autowired
+    private JwtUtils jwtlUtils;
+
 
     @Test
     void postUserRoleShouldBeCreated() throws Exception {
 
+
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
 
-        mockMvc.perform( post("/api/create/rol")
+        mockMvc.perform( post("/api/create/rol").header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(generitToUserRolWeatherOrCategoryList)))
                 .andDo(print())
                 .andExpect(status().isCreated());
     }
+
 
     @Test
     void shouldBePutUserRolSelectDestiny() throws Exception {
@@ -52,7 +58,7 @@ class CreateTripControllerTest {
         userRolRepository.insert(user);
         Country country = new Country();
 
-        mockMvc.perform( put("/api/create/destiny?id="+id)
+        mockMvc.perform( put("/api/create/destiny?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(country)))
                 .andDo(print())
@@ -207,7 +213,7 @@ class CreateTripControllerTest {
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
-        mockMvc.perform( put("/api/create/weather?id="+id)
+        mockMvc.perform( put("/api/create/weather?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -223,7 +229,7 @@ class CreateTripControllerTest {
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
-        mockMvc.perform( put("/api/create/category/accessories?id="+id)
+        mockMvc.perform( put("/api/create/category/accessories?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -239,7 +245,7 @@ class CreateTripControllerTest {
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
-        mockMvc.perform( put("/api/create/category/onhand?id="+id)
+        mockMvc.perform( put("/api/create/category/onhand?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -255,7 +261,7 @@ class CreateTripControllerTest {
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
-        mockMvc.perform( put("/api/create/category/cleanliness?id="+id)
+        mockMvc.perform( put("/api/create/category/cleanliness?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -271,7 +277,7 @@ class CreateTripControllerTest {
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
-        mockMvc.perform( put("/api/create/category/shopping?id="+id)
+        mockMvc.perform( put("/api/create/category/shopping?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -287,7 +293,7 @@ class CreateTripControllerTest {
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
-        mockMvc.perform( put("/api/create/category/medicine?id="+id)
+        mockMvc.perform( put("/api/create/category/medicine?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -303,7 +309,7 @@ class CreateTripControllerTest {
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
-        mockMvc.perform( put("/api/create/category/clothes?id="+id)
+        mockMvc.perform( put("/api/create/category/clothes?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -319,7 +325,7 @@ class CreateTripControllerTest {
         userRolRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
-        mockMvc.perform( put("/api/create/category/several?id="+id)
+        mockMvc.perform( put("/api/create/category/several?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -438,7 +444,7 @@ class CreateTripControllerTest {
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Verano", "cualquier cosa"));
 
 
-        mockMvc.perform( put("/api/create/weather?id="+id)
+        mockMvc.perform( put("/api/create/weather?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -594,7 +600,7 @@ class CreateTripControllerTest {
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
-        mockMvc.perform( put("/api/create/weather?id="+id)
+        mockMvc.perform( put("/api/create/weather?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -750,7 +756,7 @@ class CreateTripControllerTest {
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
-        mockMvc.perform( put("/api/create/weather?id="+id)
+        mockMvc.perform( put("/api/create/weather?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -906,7 +912,7 @@ class CreateTripControllerTest {
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
-        mockMvc.perform( put("/api/create/weather?id="+id)
+        mockMvc.perform( put("/api/create/weather?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
@@ -1062,13 +1068,12 @@ class CreateTripControllerTest {
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Verano", "cualquier cosa"));
 
-        mockMvc.perform( put("/api/create/weather?id="+id)
+        mockMvc.perform( put("/api/create/weather?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(weatherList)))
                 .andDo(print())
                 .andExpect(status().isAccepted());
     }
-
 
 
     static String asJsonString(final Object obj) {
@@ -1078,6 +1083,5 @@ class CreateTripControllerTest {
             throw new RuntimeException(e);
         }
     }
-
 
 }
