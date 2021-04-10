@@ -1,5 +1,9 @@
 package com.eci.ieti.controller;
 
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.eci.ieti.configuration.JwtUtils;
 import com.eci.ieti.model.AutenticationResponse;
 import com.eci.ieti.model.AuthenticationRequest;
@@ -45,13 +49,19 @@ public class AuthController {
     public ResponseEntity<AutenticationResponse> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
         String password = bCryptPasswordEncoder.encode(authenticationRequest.getPassword());
+        String country = authenticationRequest.getCountry();
+        Integer phone = authenticationRequest.getPhone();
+        Date birth = authenticationRequest.getBirth();
         UserModel user = new UserModel();
+        Pattern p = Pattern.compile("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
+        Matcher m = p.matcher(userName);
+        Boolean b = m.matches();
         user.setUserName(userName);
         user.setPassword(password);
-        System.out.println("username"+ userName);
-        System.out.println("username"+ authenticationRequest.getPassword());
-        System.out.println(userRepository.findByUserName(userName));
-        if(userRepository.findByUserName(userName)==null || userName == null){
+        user.setCountry(country);
+        user.setPhone(phone);
+        user.setBirth(birth);
+        if((userRepository.findByUserName(userName)==null || userName == null) && Boolean.TRUE.equals(b)){
             userRepository.save(user);
         } else{
             return ResponseEntity.badRequest().body(new AutenticationResponse("Error exists client subscription"));
@@ -79,24 +89,18 @@ public class AuthController {
 
     public class Token
     {
-
         String accessToken;
 
-
-        public Token( String accessToken )
-        {
+        public Token( String accessToken ){
             this.accessToken = accessToken;
         }
 
-
-        public String getAccessToken()
-        {
+        public String getAccessToken(){
             return accessToken;
         }
 
-        public void setAccessToken( String access_token )
-        {
-            this.accessToken = access_token;
+        public void setAccessToken( String accessToken ){
+            this.accessToken = accessToken;
         }
     }
 }

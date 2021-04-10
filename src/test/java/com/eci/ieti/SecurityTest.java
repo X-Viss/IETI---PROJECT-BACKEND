@@ -35,39 +35,38 @@ public class SecurityTest {
     @Test
     public void Autenticated()throws Exception{
         MvcResult mvcResult = mockMvc.perform(post("/subs").contentType("application/json")
-        .content("{\"userName\" : \"Luisa\",\"password\" : \"psw\"}"))
+        .content("{\"userName\" : \"Luisa@mail.com\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
-        Assertions.assertEquals("{\"response\":\"Succesful subscription for client Luisa\"}",mvcResult.getResponse().getContentAsString());
+        Assertions.assertEquals("{\"response\":\"Succesful subscription for client Luisa@mail.com\"}",mvcResult.getResponse().getContentAsString());
     }
 
     @Test
     public void authenticateClient() throws Exception{
         mockMvc.perform(post("/subs").contentType("application/json")
-        .content("{\"userName\" : \"Felipe\",\"password\" : \"psw\"}"))
+        .content("{\"userName\" : \"Felipe@mail.com\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
-        MvcResult mvcResult2 = mockMvc.perform(post("/auth").contentType("application/json")
-        .content("{\"userName\" : \"Felipe\",\"password\" : \"psw\"}"))
+        mockMvc.perform(post("/auth").contentType("application/json")
+        .content("{\"userName\" : \"Felipe@mail.com\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
-        Assertions.assertEquals("{\"response\":\"Succesful Authentication for client Felipe\"}",mvcResult2.getResponse().getContentAsString());
     }
 
     @Test
     public void NotAutenticated()throws Exception{
         
         mockMvc.perform(post("/subs").contentType("application/json")
-        .content("{\"userName\" : \"Luisaa\",\"password\" : \"pssw\"}"))
+        .content("{\"userName\" : \"Luisaa@mail.com\",\"password\" : \"pssw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
 
         mockMvc.perform(post("/subs").contentType("application/json")
-        .content("{\"userName\" : \"Luisaa\",\"password\" : \"pssw\"}"))
+        .content("{\"userName\" : \"Luisaa@mail.com\",\"password\" : \"pssw\"}"))
         .andDo(print())
         .andExpect(status().isBadRequest())
         .andReturn();
@@ -78,7 +77,7 @@ public class SecurityTest {
         mockMvc.perform(post("/auth").contentType("application/json")
         .content("{\"userName\" : \"Maria\",\"password\" : \"psw\"}"))
         .andDo(print())
-        .andExpect(status().isBadRequest())
+        .andExpect(status().isForbidden())
         .andReturn();
         
     }
@@ -86,13 +85,13 @@ public class SecurityTest {
     @Test
     public void authenticateClientToken() throws Exception{
         mockMvc.perform(post("/subs").contentType("application/json")
-        .content("{\"userName\" : \"yesid\",\"password\" : \"psw\"}"))
+        .content("{\"userName\" : \"yesid@mail.com\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
         
         mockMvc.perform(post("/auth").contentType("application/json")
-        .content("{\"userName\" : \"yesid\",\"password\" : \"psw\"}"))
+        .content("{\"userName\" : \"yesid@mail.com\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
@@ -102,20 +101,20 @@ public class SecurityTest {
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
-        Assertions.assertEquals("{\"response\":\"yesid\"}", mvcResult.getResponse().getContentAsString());
+        Assertions.assertEquals("{\"response\":\"yesid@mail.com\"}", mvcResult.getResponse().getContentAsString());
         
     }
 
     @Test
     public void notAuthenticateClientToken() throws Exception{
         mockMvc.perform(post("/subs").contentType("application/json")
-        .content("{\"userName\" : \"alex\",\"password\" : \"psw\"}"))
+        .content("{\"userName\" : \"alex@mail.com\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
         
         mockMvc.perform(post("/auth").contentType("application/json")
-        .content("{\"userName\" : \"alex\",\"password\" : \"psw\"}"))
+        .content("{\"userName\" : \"alex@mail.com\",\"password\" : \"psw\"}"))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
@@ -126,5 +125,14 @@ public class SecurityTest {
         .andExpect(status().isForbidden())
         .andReturn();
 
+    }
+
+    @Test
+    public void Emailprobe() throws Exception{
+        mockMvc.perform(post("/subs").contentType("application/json")
+        .content("{\"userName\" : \"Luisaa\",\"password\" : \"pssw\"}"))
+        .andDo(print())
+        .andExpect(status().isBadRequest())
+        .andReturn();        
     }
 }

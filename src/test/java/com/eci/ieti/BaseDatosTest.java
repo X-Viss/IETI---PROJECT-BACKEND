@@ -26,7 +26,7 @@ public class BaseDatosTest {
     @Test
     public void insertData() {
         Date date = new Date();
-        UserModel user = new UserModel("prueba@mail.com","Prueba", "123", 314250,date);
+        UserModel user = new UserModel("prueba@mail.com","Prueba", "123", 314250,date,"Colombia");
         customRepository.createUser(user);
         UserModel var = customRepository.getName("Prueba");
         Assertions.assertEquals("123", var.getPassword());
@@ -35,7 +35,7 @@ public class BaseDatosTest {
     @Test
     public void userRepo(){
         Date date = new Date();
-        UserModel userG = new UserModel("luisa@mail.com","Luisa","321", 314250,date);
+        UserModel userG = new UserModel("luisa@mail.com","Luisa","321", 314250,date,"Colombia");
         customRepository.createUser(userG);
         UserModel var = userRepository.findByUserName("Luisa");
         Assertions.assertEquals("321", var.getPassword());
@@ -54,11 +54,8 @@ public class BaseDatosTest {
     @Test
     public void updateUser(){
         Date date = new Date();
-        UserModel userG = new UserModel("andres@mail.com","andres","321", 314250,date);
+        UserModel userG = new UserModel("andres@mail.com","andres","321", 314250,date,"Colombia");
         customRepository.createUser(userG);
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println(customRepository.getName("andres"));
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         customRepository.updateUser("andres", "andres@mail.com", "341", 310753);
         UserModel var = customRepository.getName("andres@mail.com");
         Assertions.assertEquals("341", var.getPassword());
