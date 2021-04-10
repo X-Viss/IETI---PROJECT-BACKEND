@@ -53,7 +53,7 @@ public class AuthController {
         Integer phone = authenticationRequest.getPhone();
         Date birth = authenticationRequest.getBirth();
         UserModel user = new UserModel();
-        Pattern p = Pattern.compile("^\\S+@\\S+\\.\\S+$");
+        Pattern p = Pattern.compile("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
         Matcher m = p.matcher(userName);
         Boolean b = m.matches();
         user.setUserName(userName);

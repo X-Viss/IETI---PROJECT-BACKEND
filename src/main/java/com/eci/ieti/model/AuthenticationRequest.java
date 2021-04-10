@@ -5,9 +5,9 @@ import java.util.Date;
 public class AuthenticationRequest {
     private String userName;
     private String password;
-    private Integer phone;
     private Date birth;
     private String country;
+    private Integer phone;
 
     public AuthenticationRequest(){
         // Constructor .
@@ -29,14 +29,6 @@ public class AuthenticationRequest {
         this.password = password;
     }
 
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
-
     public Date getBirth() {
         return birth;
     }
@@ -52,5 +44,14 @@ public class AuthenticationRequest {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
+    }
+
 
 }
