@@ -10,6 +10,7 @@ public class UserRolSelect {
 
     @Id
     private String id;
+    private String user;
     private List<GeneritToUserRolWeatherOrCategory> userRolList;
     private List<GeneritToUserRolWeatherOrCategory> weatherList;
     private List<GeneritToUserRolWeatherOrCategory> accessoriesList;
@@ -35,6 +36,14 @@ public class UserRolSelect {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public List<GeneritToUserRolWeatherOrCategory> getAccessoriesList() {

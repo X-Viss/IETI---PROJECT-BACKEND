@@ -6,6 +6,7 @@ import com.eci.ieti.persistence.repository.repo.UserRepository;
 import com.eci.ieti.persistence.repository.repo.UserRolRepository;
 import com.eci.ieti.persistence.repository.repo.WeatherCategoryRolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class CustomRepositoryImpl implements CustomRepository {
 
     @Autowired
     WeatherCategoryRolRepository weatherCategoryRolRepository;
+    
 
     @Override
     public void createUser(UserModel user) {
@@ -36,7 +38,9 @@ public class CustomRepositoryImpl implements CustomRepository {
     @Override
     public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
         String id = java.util.UUID.randomUUID().toString();
+        String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         UserRolSelect user = new UserRolSelect(id, generitToUserRolWeatherOrCategoryList);
+        user.setUser(userEmail);
         userRolRepository.insert(user);
         return id;
     }
