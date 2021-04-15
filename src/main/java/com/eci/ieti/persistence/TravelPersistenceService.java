@@ -18,6 +18,6 @@ public interface TravelPersistenceService {
      */
     public List<Travel> getUserTravels(String user) throws TravelPersistenceException;
 
-    public List<Question> getFAQ() throws TravelPersistenceException;
+    public List<Question> getFAQ();
 
 }

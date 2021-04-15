@@ -15,7 +15,7 @@ public interface TravelService {
 
     public List<Travel> getUserTravels(String user) throws TravelException;
 
-    public List<Question> getFAQ() throws TravelException;
+    public List<Question> getFAQ();
     public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList);
 
     public void putDestinyByUserRolSelected(Country destiny, String id);

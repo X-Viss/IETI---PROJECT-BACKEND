@@ -36,12 +36,9 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public List<Question> getFAQ() throws TravelException {
-        try {
+    public List<Question> getFAQ(){
             return travelRepository.getFAQ();
-        } catch (TravelPersistenceException e) {
-            throw new TravelException(e.getMessage(), e);
-        }
+
     }
     public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
         return customRepositoryImpl.postTravelerRol(generitToUserRolWeatherOrCategoryList);

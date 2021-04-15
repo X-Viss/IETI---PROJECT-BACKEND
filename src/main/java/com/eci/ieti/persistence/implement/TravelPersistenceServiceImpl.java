@@ -41,7 +41,7 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
     }
 
     @Override
-    public List<Question> getFAQ() throws TravelPersistenceException {
+    public List<Question> getFAQ() {
         return questionRepository.findAll();
     }
 }
