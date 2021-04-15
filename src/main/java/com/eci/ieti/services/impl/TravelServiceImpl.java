@@ -30,7 +30,10 @@ public class TravelServiceImpl implements TravelService {
 
     @Override
     public List<Question> getFAQ() throws TravelException {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return travelRepository.getFAQ();
+        } catch (TravelPersistenceException e) {
+            throw new TravelException(e.getMessage(), e);
+        }
     }
 }

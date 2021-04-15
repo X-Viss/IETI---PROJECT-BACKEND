@@ -1,9 +1,11 @@
 package com.eci.ieti.persistence.implement;
 
 import com.eci.ieti.exceptions.persistence.TravelPersistenceException;
+import com.eci.ieti.model.Question;
 import com.eci.ieti.model.Travel;
 import com.eci.ieti.model.User;
 import com.eci.ieti.persistence.TravelPersistenceService;
+import com.eci.ieti.persistence.repository.repo.QuestionRepository;
 import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private QuestionRepository questionRepository;
+
     /**
      * Get the persisted travels from the user
      * @param user Name of the user
@@ -33,5 +38,10 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
             throw new TravelPersistenceException(TravelPersistenceException.USER_NOT_FOUND);
         }
         return travelRepository.findByUser(user);
+    }
+
+    @Override
+    public List<Question> getFAQ() throws TravelPersistenceException {
+        return questionRepository.findAll();
     }
 }

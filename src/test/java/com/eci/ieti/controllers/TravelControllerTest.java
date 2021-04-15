@@ -74,8 +74,7 @@ public class TravelControllerTest {
         );
     }
 
-
-
-
-
+    void getFaq() throws Exception {
+        mockMvc.perform(get("/api/travels/faq")).andDo(print()).andExpect(status().isOk());
+      }
 }
