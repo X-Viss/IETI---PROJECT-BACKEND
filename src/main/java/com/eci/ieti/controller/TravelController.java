@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "api/travels")
 public class TravelController {
@@ -23,8 +22,9 @@ public class TravelController {
      * @param user Name of the user
      * @return List of travels of the user
      */
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
-    public ResponseEntity<?> getTravels(@RequestParam("user") String user){
+    public ResponseEntity<Object> getTravels(@RequestParam("user") String user){
         try {
             return new ResponseEntity<>(travelService.getUserTravels(user), HttpStatus.OK);
         } catch (TravelException e) {

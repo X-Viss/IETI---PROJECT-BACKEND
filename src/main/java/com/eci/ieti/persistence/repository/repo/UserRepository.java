@@ -1,10 +1,12 @@
 package com.eci.ieti.persistence.repository.repo;
 
-import com.eci.ieti.model.User;
+import com.eci.ieti.model.UserModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends MongoRepository<User, String>{
+@Repository
+public interface UserRepository extends MongoRepository<UserModel, String>{
 
-    User findByUserName(String name);
+    UserModel findByUserName(String name);
     
 }
