@@ -17,7 +17,7 @@ public class BaseController {
     private TravelService travelService;
 
     @GetMapping("/faq")
-    public List<Question> getFAQ() throws TravelException {
+    public List<Question> getFAQ(){
 
         return travelService.getFAQ();
     }
