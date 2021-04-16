@@ -2,7 +2,7 @@ package com.eci.ieti.controllers;
 
 import com.eci.ieti.configuration.JwtUtils;
 import com.eci.ieti.model.*;
-import com.eci.ieti.persistence.repository.repo.UserRolRepository;
+import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.WeatherCategoryRolRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ class CreateTripControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private UserRolRepository userRolRepository;
+    private TravelRepository travelRepository;
 
     @Autowired
     private WeatherCategoryRolRepository weatherCategoryRolRepository;
@@ -53,9 +53,9 @@ class CreateTripControllerTest {
     void shouldBePutUserRolSelectDestiny() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("1", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("1", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         Country country = new Country();
 
         mockMvc.perform( put("/api/create/destiny?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -204,9 +204,9 @@ class CreateTripControllerTest {
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje como Mochilero", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje en pareja", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje como turist", "cualquier cosa"));
-        UserRolSelect user = new UserRolSelect("2", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("2", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Primavera", "cualquier cosa"));
@@ -224,9 +224,9 @@ class CreateTripControllerTest {
     void shouldBePutUserRolSelectAccessories() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("3", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("3", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
         mockMvc.perform( put("/api/create/category/accessories?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -240,9 +240,9 @@ class CreateTripControllerTest {
     void shouldBePutUserRolSelectOnHand() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("4", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("4", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
         mockMvc.perform( put("/api/create/category/onhand?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -256,9 +256,9 @@ class CreateTripControllerTest {
     void shouldBePutUserRolSelectCleanliness() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("5", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("5", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
         mockMvc.perform( put("/api/create/category/cleanliness?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -272,9 +272,9 @@ class CreateTripControllerTest {
     void shouldBePutUserRolSelectShopping() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("6", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("6", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
         mockMvc.perform( put("/api/create/category/shopping?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -288,9 +288,9 @@ class CreateTripControllerTest {
     void shouldBePutUserRolSelectMedicine() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("7", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("7", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
         mockMvc.perform( put("/api/create/category/medicine?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -304,9 +304,9 @@ class CreateTripControllerTest {
     void shouldBePutUserRolSelectClothes() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("8", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("8", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
         mockMvc.perform( put("/api/create/category/clothes?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -320,9 +320,9 @@ class CreateTripControllerTest {
     void severalBePutUserRolSelectSeveral() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-        UserRolSelect user = new UserRolSelect("9", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("9", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
 
         mockMvc.perform( put("/api/create/category/several?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -434,9 +434,9 @@ class CreateTripControllerTest {
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como Mochilero", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje en pareja", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como turista", "cualquier cosa"));
-        UserRolSelect user = new UserRolSelect("10", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("10", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
@@ -592,9 +592,9 @@ class CreateTripControllerTest {
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como Mochilero", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje en pareja", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como turist", "cualquier cosa"));
-        UserRolSelect user = new UserRolSelect("11", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("11", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Otoño", "cualquier cosa"));
@@ -748,9 +748,9 @@ class CreateTripControllerTest {
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje como Mochilero", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje en pareja", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje como turist", "cualquier cosa"));
-        UserRolSelect user = new UserRolSelect("12", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("12", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Otoño", "cualquier cosa"));
@@ -904,9 +904,9 @@ class CreateTripControllerTest {
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje como Mochilero", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje en pareja", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(false,"Viaje como turist", "cualquier cosa"));
-        UserRolSelect user = new UserRolSelect("13", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("13", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));
@@ -1088,9 +1088,9 @@ class CreateTripControllerTest {
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como Mochilero", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje en pareja", "cualquier cosa"));
         generitToUserRolWeatherOrCategoryList.add(new GeneritToUserRolWeatherOrCategory(true,"Viaje como turist", "cualquier cosa"));
-        UserRolSelect user = new UserRolSelect("14", generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel("14", generitToUserRolWeatherOrCategoryList);
         String id = user.getId();
-        userRolRepository.insert(user);
+        travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));

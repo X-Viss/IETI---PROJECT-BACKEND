@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface TravelRepository extends MongoRepository<Travel, String> {
-
     /**
      * Find the user travels by name of the user owner
      * @param user User name
@@ -14,4 +13,5 @@ public interface TravelRepository extends MongoRepository<Travel, String> {
      */
     public List<Travel> findByUser(String user);
 
+    public Travel findUserRolSelectById(String id);
 }

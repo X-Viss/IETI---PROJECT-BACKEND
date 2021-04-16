@@ -4,8 +4,8 @@ import com.eci.ieti.exceptions.TravelException;
 import com.eci.ieti.model.Store;
 import com.eci.ieti.model.Country;
 import com.eci.ieti.model.ListCategories;
-import com.eci.ieti.model.Travel;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
+import com.eci.ieti.model.Travel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
