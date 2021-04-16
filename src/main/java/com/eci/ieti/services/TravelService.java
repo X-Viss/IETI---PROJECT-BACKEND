@@ -15,6 +15,7 @@ public interface TravelService {
 
     public List<Travel> getUserTravels(String user) throws TravelException;
 
+    public Travel getTravel(String travelId);
     public void updateTravelCategory(List<GeneritToUserRolWeatherOrCategory> newCategory,String travelId);
 
     public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList);

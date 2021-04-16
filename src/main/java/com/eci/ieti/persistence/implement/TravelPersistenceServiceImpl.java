@@ -37,6 +37,11 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
     }
 
     @Override
+    public Travel getTravel(String travelId){
+        return travelRepository.findUserRolSelectById(travelId);
+    }
+
+    @Override
     public void updateTravelCategory(List<GeneritToUserRolWeatherOrCategory> newCategory, String travelId) {
         Travel travel = travelRepository.findUserRolSelectById(travelId);
         travel.setSeveralList(newCategory);

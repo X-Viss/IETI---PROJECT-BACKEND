@@ -8,6 +8,7 @@ import com.eci.ieti.model.Travel;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.services.TravelService;
 import com.eci.ieti.exceptions.TravelException;
+import com.eci.ieti.model.Elements;
 import com.eci.ieti.model.Category;
 import com.eci.ieti.model.Travel;
 import com.eci.ieti.persistence.TravelPersistenceService;
@@ -37,6 +38,10 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
+    public Travel getTravel(String travelId){
+        return travelRepository.getTravel(travelId);
+    }
+    
     public void updateTravelCategory(List<GeneritToUserRolWeatherOrCategory> newCategory, String travelId) {
         travelRepository.updateTravelCategory(newCategory, travelId);
         

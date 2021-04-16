@@ -1,7 +1,9 @@
 package com.eci.ieti.controllers;
 
-
 import com.eci.ieti.configuration.JwtUtils;
+import com.eci.ieti.model.*;
+import com.eci.ieti.persistence.repository.repo.TravelRepository;
+import com.eci.ieti.persistence.repository.repo.WeatherCategoryRolRepository;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import com.eci.ieti.model.Travel;
 import com.eci.ieti.model.UserModel;
@@ -89,6 +91,14 @@ public class TravelControllerTest {
     }
 
     @Test
+    void getTravelById() throws Exception {
+        mockMvc.perform(get("/bag/travel?travelId=6078fda0fed2e61d4c48d58e")).andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    void getTravelByNoExistsId() throws Exception {
+        mockMvc.perform(get("/bag/travel?travelId=")).andDo(print()).andExpect(status().isOk());
+    }
     void agregarElementosNuevaCategoria() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();

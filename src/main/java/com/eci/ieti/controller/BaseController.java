@@ -18,6 +18,12 @@ public class BaseController {
 
     @Autowired
     private TravelService travelService;
+    
+    @GetMapping("/travel")
+    public Travel getTravel(@RequestParam("travelId") String travelId){
+        return travelService.getTravel(travelId);
+        
+    }
 
     @PutMapping(value = "category/newCategory")
     public ResponseEntity<GeneritToUserRolWeatherOrCategory> putNewCategory(@RequestBody List<GeneritToUserRolWeatherOrCategory> others, @RequestParam("travelId") String travelId) {
