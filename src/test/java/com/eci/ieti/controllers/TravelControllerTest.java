@@ -101,6 +101,18 @@ public class TravelControllerTest {
         mockMvc.perform(get("/bag/stores?category=ROPA")).andDo(print()).andExpect(status().isOk());
     }
 
+    @Test
+    void getStoresByCategoryNull() throws Exception {
+        mockMvc.perform(get("/bag/stores")).andDo(print()).andExpect(status().is4xxClientError());
+    }
 
+    @Test
+    void getStoresByCategoryVacio() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=")).andDo(print()).andExpect(status().isOk());
+    }
 
+    @Test
+    void getStoresByCategoryNoExiste() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=NULL")).andDo(print()).andExpect(status().isOk());
+    }
 }
