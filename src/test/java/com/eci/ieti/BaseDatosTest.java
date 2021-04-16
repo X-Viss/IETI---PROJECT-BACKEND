@@ -72,8 +72,9 @@ public class BaseDatosTest {
         Assertions.assertEquals("341", var.getPassword());
     }
     
+
     @Test
-    public void verifyStoreCategory(){
+    public void verifyStoreCategoryNull(){
         Store store = new Store();
         List<String> tagCat = new ArrayList<>();
         tagCat.add("ASEO");
@@ -85,10 +86,28 @@ public class BaseDatosTest {
         store.setTagCategories(tagCat);
         storeRepository.save(store);
 
-        String categoryCompare = "ASEO";
+        String categoryCompare = "";
         
         List<Store> storeResult = travelRepository.getStores(categoryCompare);
-        Assertions.assertEquals(1, storeResult.size());
+        Assertions.assertEquals(0, storeResult.size());
     }
 
+    @Test
+    public void verifyStoreCategoryNoExiste(){
+        Store store = new Store();
+        List<String> tagCat = new ArrayList<>();
+        tagCat.add("ASEO");
+        tagCat.add("SALUD");
+        tagCat.add("ACCESORIOS");
+        store.setName("Metro");
+        store.setPathImage("imageonred.html");
+        store.setUrl("metro.com");
+        store.setTagCategories(tagCat);
+        storeRepository.save(store);
+
+        String categoryCompare = "VESTUARIO";
+        
+        List<Store> storeResult = travelRepository.getStores(categoryCompare);
+        Assertions.assertEquals(0, storeResult.size());
+    }
 }
