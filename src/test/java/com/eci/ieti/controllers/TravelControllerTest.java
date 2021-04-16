@@ -3,6 +3,7 @@ package com.eci.ieti.controllers;
 
 import com.eci.ieti.configuration.JwtUtils;
 import com.eci.ieti.model.UserModel;
+import com.eci.ieti.persistence.TravelPersistenceService;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,14 @@
 package com.eci.ieti;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import com.eci.ieti.model.Store;
 import com.eci.ieti.model.UserModel;
+import com.eci.ieti.persistence.TravelPersistenceService;
 import com.eci.ieti.persistence.repository.CustomRepository;
+import com.eci.ieti.persistence.repository.repo.StoreRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 
 import org.junit.jupiter.api.Assertions;
@@ -22,6 +27,12 @@ public class BaseDatosTest {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    StoreRepository storeRepository;
+
+    @Autowired
+    TravelPersistenceService travelRepository;
 
     @Test
     public void insertData() {
@@ -61,5 +72,23 @@ public class BaseDatosTest {
         Assertions.assertEquals("341", var.getPassword());
     }
     
+    @Test
+    public void verifyStoreCategory(){
+        Store store = new Store();
+        List<String> tagCat = new ArrayList<>();
+        tagCat.add("ASEO");
+        tagCat.add("SALUD");
+        tagCat.add("ACCESORIOS");
+        store.setName("Metro");
+        store.setPathImage("imageonred.html");
+        store.setUrl("metro.com");
+        store.setTagCategories(tagCat);
+        storeRepository.save(store);
+
+        String categoryCompare = "ASEO";
+        
+        List<Store> storeResult = travelRepository.getStores(categoryCompare);
+        Assertions.assertEquals(1, storeResult.size());
+    }
 
 }
