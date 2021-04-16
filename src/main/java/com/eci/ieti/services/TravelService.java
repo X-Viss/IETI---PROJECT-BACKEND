@@ -1,6 +1,7 @@
 package com.eci.ieti.services;
 
 import com.eci.ieti.exceptions.TravelException;
+import com.eci.ieti.model.Store;
 import com.eci.ieti.model.Category;
 import com.eci.ieti.model.Country;
 import com.eci.ieti.model.ListCategories;
@@ -15,6 +16,8 @@ public interface TravelService {
 
     public List<Travel> getUserTravels(String user) throws TravelException;
 
+    public List<Store> getStores(String category);
+    
     public Travel getTravel(String travelId);
     public void updateTravelCategory(List<GeneritToUserRolWeatherOrCategory> newCategory,String travelId);
 

@@ -1,5 +1,6 @@
 package com.eci.ieti.controller;
 
+import com.eci.ieti.model.Store;
 
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import com.eci.ieti.model.Travel;
@@ -19,6 +20,11 @@ public class BaseController {
     @Autowired
     private TravelService travelService;
     
+    @GetMapping("/stores")
+    public List<Store> getStores(@RequestParam("category") String category){
+        return travelService.getStores(category);
+        
+    }
     @GetMapping("/travel")
     public Travel getTravel(@RequestParam("travelId") String travelId){
         return travelService.getTravel(travelId);

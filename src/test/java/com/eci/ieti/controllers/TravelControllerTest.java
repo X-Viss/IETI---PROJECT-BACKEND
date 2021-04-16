@@ -7,6 +7,7 @@ import com.eci.ieti.persistence.repository.repo.WeatherCategoryRolRepository;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import com.eci.ieti.model.Travel;
 import com.eci.ieti.model.UserModel;
+import com.eci.ieti.persistence.TravelPersistenceService;
 import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -91,6 +92,16 @@ public class TravelControllerTest {
     }
 
     @Test
+    void getStoresByCategoryAseo() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=ASEO")).andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    void getStoresByCategoryALaMano() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=A LA MANO")).andDo(print()).andExpect(status().isOk());
+    }
+    
+    @Test
     void getTravelById() throws Exception {
         mockMvc.perform(get("/bag/travel?travelId=6078fda0fed2e61d4c48d58e")).andDo(print()).andExpect(status().isOk());
     }
@@ -99,6 +110,8 @@ public class TravelControllerTest {
     void getTravelByNoExistsId() throws Exception {
         mockMvc.perform(get("/bag/travel?travelId=")).andDo(print()).andExpect(status().isOk());
     }
+
+    @Test
     void agregarElementosNuevaCategoria() throws Exception {
 
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
@@ -114,6 +127,35 @@ public class TravelControllerTest {
                 .andExpect(status().isAccepted());
     }
 
+    @Test
+    void getStoresByCategorySalud() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=SALUD")).andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    void getStoresByCategoryAccesorios() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=ACCESORIOS")).andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    void getStoresByCategoryRopa() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=ROPA")).andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    void getStoresByCategoryNull() throws Exception {
+        mockMvc.perform(get("/bag/stores")).andDo(print()).andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    void getStoresByCategoryVacio() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=")).andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    void getStoresByCategoryNoExiste() throws Exception {
+        mockMvc.perform(get("/bag/stores?category=NULL")).andDo(print()).andExpect(status().isOk());
+    }
 
     static String asJsonString(final Object obj) {
         try {
@@ -122,6 +164,4 @@ public class TravelControllerTest {
             throw new RuntimeException(e);
         }
     }
-
-
 }
