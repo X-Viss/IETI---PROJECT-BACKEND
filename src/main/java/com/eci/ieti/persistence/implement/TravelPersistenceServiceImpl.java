@@ -1,6 +1,7 @@
 package com.eci.ieti.persistence.implement;
 
 import com.eci.ieti.exceptions.persistence.TravelPersistenceException;
+import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import com.eci.ieti.model.Travel;
 import com.eci.ieti.model.UserModel;
 import com.eci.ieti.persistence.TravelPersistenceService;
@@ -33,5 +34,12 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
             throw new TravelPersistenceException(TravelPersistenceException.USER_NOT_FOUND);
         }
         return travelRepository.findByUser(user);
+    }
+
+    @Override
+    public void updateTravelCategory(List<GeneritToUserRolWeatherOrCategory> newCategory, String travelId) {
+        Travel travel = travelRepository.findUserRolSelectById(travelId);
+        travel.setSeveralList(newCategory);
+        travelRepository.save(travel);
     }
 }
