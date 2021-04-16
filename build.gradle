@@ -62,9 +62,14 @@ sonarqube {
 
 
 dependencies {
+	// https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path
+	implementation group: 'com.jayway.jsonpath', name: 'json-path', version: '2.5.0'
 	//implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.4.4'
 	testImplementation group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '2.2.0'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+  	testImplementation 'org.springframework.security:spring-security-test'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	implementation('io.jsonwebtoken:jjwt:0.6.0')
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

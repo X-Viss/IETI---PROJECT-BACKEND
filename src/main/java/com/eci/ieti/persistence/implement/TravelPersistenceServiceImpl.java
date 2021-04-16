@@ -2,7 +2,7 @@ package com.eci.ieti.persistence.implement;
 
 import com.eci.ieti.exceptions.persistence.TravelPersistenceException;
 import com.eci.ieti.model.Travel;
-import com.eci.ieti.model.User;
+import com.eci.ieti.model.UserModel;
 import com.eci.ieti.persistence.TravelPersistenceService;
 import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
@@ -28,10 +28,15 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
      */
     @Override
     public List<Travel> getUserTravels(String user) throws TravelPersistenceException {
-        User actualUser = userRepository.findByUserName(user);
+        UserModel actualUser = userRepository.findByUserName(user);
         if(actualUser==null){
             throw new TravelPersistenceException(TravelPersistenceException.USER_NOT_FOUND);
         }
         return travelRepository.findByUser(user);
+    }
+
+    @Override
+    public Travel getTravel(String travelId){
+        return travelRepository.findUserRolSelectById(travelId);
     }
 }
