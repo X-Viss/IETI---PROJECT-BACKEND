@@ -3,13 +3,14 @@ package com.eci.ieti.persistence.implement;
 import com.eci.ieti.model.*;
 import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
-import com.eci.ieti.persistence.repository.repo.UserRolRepository;
+import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.WeatherCategoryRolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component("CustomRepository")
@@ -19,7 +20,7 @@ public class CustomRepositoryImpl implements CustomRepository {
     UserRepository userRepository;
 
     @Autowired
-    UserRolRepository userRolRepository;
+    TravelRepository travelRepository;
 
     @Autowired
     WeatherCategoryRolRepository weatherCategoryRolRepository;
@@ -39,78 +40,80 @@ public class CustomRepositoryImpl implements CustomRepository {
     public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
         String id = java.util.UUID.randomUUID().toString();
         String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
-        UserRolSelect user = new UserRolSelect(id, generitToUserRolWeatherOrCategoryList);
+        Travel user = new Travel(id, generitToUserRolWeatherOrCategoryList);
         user.setUser(userEmail);
-        userRolRepository.insert(user);
+        user.setTravelId(id);
+        user.setDueDate(new Date());
+        travelRepository.insert(user);
         return id;
     }
 
     @Override
     public void putDestinyByUserRolSelected(Country destiny, String id) {
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setDestiny(destiny.getCountry());
-        userRolRepository.save(userRolSelect);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setDestiny(destiny.getCountry());
+        travelRepository.save(travel);
     }
 
     @Override
     public ListCategories weahterByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> weatherList, String id) {
         ListCategories listCategories = new ListCategories();
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setWeatherList(weatherList);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setWeatherList(weatherList);
         String weatherName = getWeatherNaer(weatherList);
-        List<String> rolName = getRolsName(userRolSelect);
+        List<String> rolName = getRolsName(travel);
         ListCategories toReturn = combinations(listCategories, weatherName, rolName);
-        userRolRepository.save(userRolSelect);
+        travelRepository.save(travel);
         return toReturn;
     }
 
     @Override
     public void accessoriesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> accessories, String id) {
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setAccessoriesList(accessories);
-        userRolRepository.save(userRolSelect);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setAccessoriesList(accessories);
+        travelRepository.save(travel);
     }
 
     @Override
     public void onHandByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> onhand, String id) {
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setOnHandList(onhand);
-        userRolRepository.save(userRolSelect);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setOnHandList(onhand);
+        travelRepository.save(travel);
     }
 
     @Override
     public void cleanlinessByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> cleanliness, String id) {
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setCleanlinessList(cleanliness);
-        userRolRepository.save(userRolSelect);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setCleanlinessList(cleanliness);
+        travelRepository.save(travel);
     }
 
     @Override
     public void shoppingByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> shopping, String id) {
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setShoppingList(shopping);
-        userRolRepository.save(userRolSelect);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setShoppingList(shopping);
+        travelRepository.save(travel);
     }
 
     @Override
     public void medicineByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> medicine, String id) {
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setMedicineList(medicine);
-        userRolRepository.save(userRolSelect);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setMedicineList(medicine);
+        travelRepository.save(travel);
     }
 
     @Override
     public void clothesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> clothes, String id) {
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setClothesList(clothes);
-        userRolRepository.save(userRolSelect);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setClothesList(clothes);
+        travelRepository.save(travel);
     }
 
     @Override
     public void severalByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id) {
-        UserRolSelect userRolSelect = userRolRepository.findUserRolSelectById(id);
-        userRolSelect.setSeveralList(several);
-        userRolRepository.save(userRolSelect);
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setSeveralList(several);
+        travelRepository.save(travel);
     }
 
     private String getWeatherNaer(List<GeneritToUserRolWeatherOrCategory> weatherList) {
@@ -123,9 +126,9 @@ public class CustomRepositoryImpl implements CustomRepository {
         return name;
     }
 
-    private List<String> getRolsName(UserRolSelect userRolSelect) {
+    private List<String> getRolsName(Travel travel) {
         List<String> list = new ArrayList<>();
-        for (GeneritToUserRolWeatherOrCategory data : userRolSelect.getUserRolList()) {
+        for (GeneritToUserRolWeatherOrCategory data : travel.getUserRolList()) {
             if (data.isCheck()) {
                 list.add(data.getName());
             }
