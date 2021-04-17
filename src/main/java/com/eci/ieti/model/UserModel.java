@@ -14,12 +14,14 @@ public class UserModel {
     private String password;
     private Integer phone;
     private Date birth;
+    private String country;
 
-    public UserModel(String email, String userName, String password, Integer phone, Date birth) {
+    public UserModel(String email, String userName, String password, Integer phone, Date birth, String country) {
         this.email = email;
         this.userName = userName;
         this.password = password;
         this.phone = phone;
+        this.country = country;
         this.birth = birth;
     }
 
@@ -66,6 +68,14 @@ public class UserModel {
     public void setUserName(String userName) {
         this.userName = userName;
         this.email = userName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 }
