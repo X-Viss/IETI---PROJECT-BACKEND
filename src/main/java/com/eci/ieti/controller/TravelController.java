@@ -6,6 +6,8 @@ import com.eci.ieti.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -25,7 +27,8 @@ public class TravelController {
     @GetMapping
     public ResponseEntity<Object> getTravels(@RequestParam("user") String user){
         try {
-            return new ResponseEntity<>(travelService.getUserTravels(user), HttpStatus.OK);
+            String name  =  SecurityContextHolder.getContext().getAuthentication().getName();
+            return new ResponseEntity<>(travelService.getUserTravels(name), HttpStatus.OK);
         } catch (TravelException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
