@@ -27,8 +27,7 @@ public class TravelController {
     @GetMapping
     public ResponseEntity<Object> getTravels(@RequestParam("user") String user){
         try {
-            String name  =  SecurityContextHolder.getContext().getAuthentication().getName();
-            return new ResponseEntity<>(travelService.getUserTravels(name), HttpStatus.OK);
+            return new ResponseEntity<>(travelService.getUserTravels(user), HttpStatus.OK);
         } catch (TravelException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
