@@ -80,7 +80,6 @@ public class AuthController {
             e.printStackTrace();
             throw e;
         }
-        System.out.println("xxx");
         UserDetails loadedUser = userService.loadUserByUsername(userName);
         return new Token(jwtlUtils.generateToken(loadedUser));
     }
