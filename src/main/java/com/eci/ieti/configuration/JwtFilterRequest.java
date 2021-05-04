@@ -40,7 +40,6 @@ public class JwtFilterRequest extends OncePerRequestFilter {
     private static final List<String> EXCLUDE_URL = Arrays.asList("/subs", "/auth");
 
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("FILTER");
         String authorizationHeader = request.getHeader("Authorization");
         String userName = null;
         String jwtToken = null;
