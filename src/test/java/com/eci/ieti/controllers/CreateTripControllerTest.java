@@ -163,7 +163,6 @@ class CreateTripControllerTest {
         weatherCategoryRol9.setSpringAccesories(primaverAccesorios);
         weatherCategoryRol9.setSpringClothes(primaveraRopa);
         weatherCategoryRolRepository.save(weatherCategoryRol9);
-
         List<String> otonoAccesorios = new ArrayList<>();
         List<String> otonoRopa = new ArrayList<>();
         WeatherCategoryRol weatherCategoryRol10 = new WeatherCategoryRol();
