@@ -148,6 +148,9 @@ public class CustomRepositoryImpl implements CustomRepository {
         WeatherCategoryRol backpacker = null;
         WeatherCategoryRol tourist = null;
 
+        if(weatherName=="Otoño"){
+            weatherName="Otono";
+        }
         for (String data : rolName) {
             if (data.equals("Viaje con mascotas")) {
                 pets = weatherCategoryRolRepository.findCategoryById("Mascota");
@@ -247,15 +250,15 @@ public class CustomRepositoryImpl implements CustomRepository {
                     res.add(data);
                 }
             }
-        } else if (weatherName.equals("Otoño") && wetherList.getAutumnClothes() != null) {
-            for (String data : wetherList.getAutumnClothes()) {
+        } else if (weatherName.equals("Invierno") && wetherList.getWinterClothes() != null) {
+            for (String data : wetherList.getWinterClothes()) {
                 if (!res.contains(data)) {
                     res.add(data);
                 }
             }
         } else {
-            for (String data : wetherList.getWinterClothes()) {
-                if (wetherList.getWinterClothes() != null && !res.contains(data)) {
+            for (String data : wetherList.getAutumnClothes()) {
+                if (wetherList.getAutumnClothes() != null && !res.contains(data)) {
                     res.add(data);
                 }
             }
@@ -312,15 +315,15 @@ public class CustomRepositoryImpl implements CustomRepository {
                         res.add(data);
                     }
             }
-        } else if (weatherName.equals("Otoño") && wetherList.getAutumnAccesories() != null) {
-                for (String data : wetherList.getAutumnAccesories()) {
+        } else if (weatherName.equals("Invierno") && wetherList.getWinterAccesories() != null) {
+                for (String data : wetherList.getWinterAccesories()) {
                     if (!res.contains(data)) {
                         res.add(data);
                 }
             }
         } else {
-            if (wetherList.getWinterAccesories() != null) {
-                for (String data : wetherList.getWinterAccesories()) {
+            if (wetherList.getAutumnAccesories() != null) {
+                for (String data : wetherList.getAutumnAccesories()) {
                     if (!res.contains(data)) {
                         res.add(data);
                     }

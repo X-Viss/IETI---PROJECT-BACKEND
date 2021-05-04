@@ -210,7 +210,7 @@ class CreateTripControllerTest {
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Primavera", "cualquier cosa"));
-        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));
+        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otono", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
         mockMvc.perform( put("/api/create/weather?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
@@ -438,7 +438,7 @@ class CreateTripControllerTest {
         String id = user.getId();
         travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
-        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));
+        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otono", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Verano", "cualquier cosa"));
@@ -557,7 +557,7 @@ class CreateTripControllerTest {
         otonoAccesorios.add("Sombrilla");
         otonoRopa.add("Guantes");
         otonoRopa.add("Gorros");
-        weatherCategoryRol10.setId("Otoño");
+        weatherCategoryRol10.setId("Otono");
         weatherCategoryRol10.setAutumnAccesories(otonoAccesorios);
         weatherCategoryRol10.setAutumnClothes(otonoRopa);
         weatherCategoryRolRepository.save(weatherCategoryRol10);
@@ -597,7 +597,7 @@ class CreateTripControllerTest {
         travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
-        weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Otoño", "cualquier cosa"));
+        weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Otono", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
@@ -753,7 +753,7 @@ class CreateTripControllerTest {
         travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
-        weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Otoño", "cualquier cosa"));
+        weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Otono", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
@@ -909,7 +909,7 @@ class CreateTripControllerTest {
         travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
-        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));
+        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otono", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Verano", "cualquier cosa"));
 
@@ -1050,7 +1050,7 @@ class CreateTripControllerTest {
         otonoRopa.add("Guantes");
         otonoRopa.add("Orejeras");
         otonoRopa.add("Gorros");
-        weatherCategoryRol10.setId("Otoño");
+        weatherCategoryRol10.setId("Otono");
         weatherCategoryRol10.setAutumnAccesories(otonoAccesorios);
         weatherCategoryRol10.setAutumnClothes(otonoRopa);
         weatherCategoryRolRepository.save(weatherCategoryRol10);
@@ -1093,7 +1093,7 @@ class CreateTripControllerTest {
         travelRepository.insert(user);
         List<GeneritToUserRolWeatherOrCategory> weatherList = new ArrayList<>();
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Primavera", "cualquier cosa"));
-        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otoño", "cualquier cosa"));
+        weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Otono", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(false, "Invierno", "cualquier cosa"));
         weatherList.add(new GeneritToUserRolWeatherOrCategory(true, "Verano", "cualquier cosa"));
 
