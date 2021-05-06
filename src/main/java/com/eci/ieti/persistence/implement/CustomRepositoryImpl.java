@@ -37,15 +37,21 @@ public class CustomRepositoryImpl implements CustomRepository {
     }
 
     @Override
-    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
-        String id = java.util.UUID.randomUUID().toString();
-        String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
-        Travel user = new Travel(id, generitToUserRolWeatherOrCategoryList);
-        user.setUser(userEmail);
-        user.setTravelId(id);
-        user.setDueDate(new Date());
-        travelRepository.insert(user);
-        return id;
+    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList, String idMongo) {
+        if(idMongo.equals("")) {
+            String id = java.util.UUID.randomUUID().toString();
+            String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+            Travel user = new Travel(id, generitToUserRolWeatherOrCategoryList);
+            user.setUser(userEmail);
+            user.setTravelId(id);
+            travelRepository.insert(user);
+            return id;
+        }else{
+            Travel travel = travelRepository.findUserRolSelectById(idMongo);
+            travel.setUserRolList(generitToUserRolWeatherOrCategoryList);
+            travelRepository.save(travel);
+            return idMongo;
+        }
     }
 
     @Override
@@ -113,6 +119,14 @@ public class CustomRepositoryImpl implements CustomRepository {
     public void severalByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id) {
         Travel travel = travelRepository.findUserRolSelectById(id);
         travel.setSeveralList(several);
+        travelRepository.save(travel);
+    }
+
+    @Override
+    public void putTitleAndHour(Travel titleTime, String id) {
+        Travel travel = travelRepository.findUserRolSelectById(id);
+        travel.setDueDate(titleTime.getDueDate());
+        travel.setTitle(titleTime.getTitle());
         travelRepository.save(travel);
     }
 

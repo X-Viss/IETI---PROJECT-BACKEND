@@ -2,6 +2,7 @@ package com.eci.ieti.controller;
 
 import com.eci.ieti.model.Country;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
+import com.eci.ieti.model.Travel;
 import com.eci.ieti.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,13 +19,19 @@ public class CreateTripController {
     private TravelService travelService;
 
     @PostMapping(value = "rol")
-    public ResponseEntity<String> postSelectTravelerRol(@RequestBody List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
-        return new ResponseEntity<>(travelService.postTravelerRol(generitToUserRolWeatherOrCategoryList), HttpStatus.CREATED);
+    public ResponseEntity<String> postSelectTravelerRol(@RequestBody List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList, @RequestParam("id") String id) {
+        return new ResponseEntity<>(travelService.postTravelerRol(generitToUserRolWeatherOrCategoryList, id), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "destiny")
     public ResponseEntity<Country> putDestinyByUserRolSelected(@RequestBody Country destiny, @RequestParam("id") String id) {
         travelService.putDestinyByUserRolSelected(destiny, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "titlehour")
+    public ResponseEntity<Country> putTitleAndHour(@RequestBody Travel titleTime, @RequestParam("id") String id) {
+        travelService.putTitleAndHour(titleTime, id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

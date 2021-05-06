@@ -1,17 +1,15 @@
 package com.eci.ieti.persistence.repository;
 
-import com.eci.ieti.model.Country;
-import com.eci.ieti.model.ListCategories;
-import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
+import com.eci.ieti.model.*;
+
 import java.util.List;
-import com.eci.ieti.model.UserModel;
 
 public interface CustomRepository{
     public void createUser(UserModel user);
     public UserModel getName(String name);
     public void updateUser(String name,String email, String password, Integer phone);
 
-    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList);
+    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList, String id);
 
     public void putDestinyByUserRolSelected(Country destiny, String id);
 
@@ -30,4 +28,6 @@ public interface CustomRepository{
     public void clothesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> clothes, String id);
 
     public void severalByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id);
+
+    void putTitleAndHour(Travel titleTime, String id);
 }

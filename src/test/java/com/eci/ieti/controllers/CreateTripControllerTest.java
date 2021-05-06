@@ -38,10 +38,9 @@ class CreateTripControllerTest {
     @Test
     void postUserRoleShouldBeCreated() throws Exception {
 
-
         List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
-
-        mockMvc.perform( post("/api/create/rol").header("Authorization", "Bearer "+jwtlUtils.getTokenString())
+        String id = "";
+        mockMvc.perform( post("/api/create/rol?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(generitToUserRolWeatherOrCategoryList)))
                 .andDo(print())
