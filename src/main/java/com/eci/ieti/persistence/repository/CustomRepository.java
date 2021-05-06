@@ -2,6 +2,7 @@ package com.eci.ieti.persistence.repository;
 
 import com.eci.ieti.model.*;
 
+import java.util.Date;
 import java.util.List;
 
 public interface CustomRepository{
@@ -29,5 +30,5 @@ public interface CustomRepository{
 
     public void severalByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id);
 
-    void putTitleAndHour(Travel titleTime, String id);
+    void putTitleAndHour(String title, Date date, String id);
 }

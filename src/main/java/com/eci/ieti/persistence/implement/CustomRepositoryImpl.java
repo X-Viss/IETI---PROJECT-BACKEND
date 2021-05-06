@@ -123,10 +123,10 @@ public class CustomRepositoryImpl implements CustomRepository {
     }
 
     @Override
-    public void putTitleAndHour(Travel titleTime, String id) {
+    public void putTitleAndHour(String title, Date date, String id) {
         Travel travel = travelRepository.findUserRolSelectById(id);
-        travel.setDueDate(titleTime.getDueDate());
-        travel.setTitle(titleTime.getTitle());
+        travel.setDueDate(date);
+        travel.setTitle(title);
         travelRepository.save(travel);
     }
 
@@ -162,7 +162,7 @@ public class CustomRepositoryImpl implements CustomRepository {
         WeatherCategoryRol backpacker = null;
         WeatherCategoryRol tourist = null;
 
-        if(weatherName=="Otoño"){
+        if(weatherName.equals("Otoño")){
             weatherName="Otono";
         }
         for (String data : rolName) {

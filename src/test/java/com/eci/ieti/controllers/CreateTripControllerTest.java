@@ -47,6 +47,36 @@ class CreateTripControllerTest {
                 .andExpect(status().isCreated());
     }
 
+    @Test
+    void postUserRoleShouldBeCreatedWithId() throws Exception {
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        Travel user = new Travel("55", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        travelRepository.insert(user);
+
+        mockMvc.perform( post("/api/create/rol?id="+id).header("Authorization", "Bearer "+jwtlUtils.getTokenString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(generitToUserRolWeatherOrCategoryList)))
+                .andDo(print())
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    void putTitleAndDateOfTravel() throws Exception {
+        List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList = new ArrayList<>();
+        Travel user = new Travel("56", generitToUserRolWeatherOrCategoryList);
+        String id = user.getId();
+        travelRepository.insert(user);
+        String tit = "hora de aventura";
+        String hor = "2021-06-05T13:07";
+        String URL = "/api/create/titlehour?id="+id+"&title="+tit+"&date="+hor;
+
+        mockMvc.perform( put(URL).header("Authorization","Bearer "+jwtlUtils.getTokenString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(id)))
+                .andDo(print())
+                .andExpect(status().isAccepted());
+    }
 
     @Test
     void shouldBePutUserRolSelectDestiny() throws Exception {

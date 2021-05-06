@@ -2,12 +2,15 @@ package com.eci.ieti.controller;
 
 import com.eci.ieti.model.Country;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
-import com.eci.ieti.model.Travel;
 import com.eci.ieti.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -30,8 +33,11 @@ public class CreateTripController {
     }
 
     @PutMapping(value = "titlehour")
-    public ResponseEntity<Country> putTitleAndHour(@RequestBody Travel titleTime, @RequestParam("id") String id) {
-        travelService.putTitleAndHour(titleTime, id);
+    public ResponseEntity<Country> putTitleAndHour(@RequestParam("title") String title, @RequestParam("date") String date, @RequestParam("id") String id) throws ParseException {
+        String newDate = date.replace("T"," ");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date toDate = formato.parse(newDate);
+        travelService.putTitleAndHour(title, toDate, id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

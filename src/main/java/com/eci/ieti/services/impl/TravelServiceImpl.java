@@ -13,6 +13,7 @@ import com.eci.ieti.persistence.TravelPersistenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -97,8 +98,8 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public void putTitleAndHour(Travel titleTime, String id) {
-        customRepositoryImpl.putTitleAndHour(titleTime, id);
+    public void putTitleAndHour(String title, Date date, String id) {
+        customRepositoryImpl.putTitleAndHour(title, date, id);
     }
 
 }

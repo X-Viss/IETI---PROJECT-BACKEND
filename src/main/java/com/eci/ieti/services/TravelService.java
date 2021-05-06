@@ -8,6 +8,7 @@ import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import com.eci.ieti.model.Travel;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -40,5 +41,5 @@ public interface TravelService {
 
     public void putSeveralByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id);
 
-    void putTitleAndHour(Travel titleTime, String id);
+    void putTitleAndHour(String title, Date date, String id);
 }
