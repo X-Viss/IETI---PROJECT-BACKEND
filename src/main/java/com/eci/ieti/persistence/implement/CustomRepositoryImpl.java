@@ -152,7 +152,6 @@ public class CustomRepositoryImpl implements CustomRepository {
 
     private ListCategories combinations(ListCategories listCategories, String weatherName, List<String> rolName) {
 
-        System.out.println("omeeeeee..........."+weatherName);
         WeatherCategoryRol wetherList = weatherCategoryRolRepository.findCategoryById(weatherName);
         WeatherCategoryRol health = weatherCategoryRolRepository.findCategoryById("Salud");
         WeatherCategoryRol cleanness = weatherCategoryRolRepository.findCategoryById("Aseo");
