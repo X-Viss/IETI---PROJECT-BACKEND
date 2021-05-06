@@ -152,6 +152,7 @@ public class CustomRepositoryImpl implements CustomRepository {
 
     private ListCategories combinations(ListCategories listCategories, String weatherName, List<String> rolName) {
 
+        System.out.println("omeeeeee..........."+weatherName);
         WeatherCategoryRol wetherList = weatherCategoryRolRepository.findCategoryById(weatherName);
         WeatherCategoryRol health = weatherCategoryRolRepository.findCategoryById("Salud");
         WeatherCategoryRol cleanness = weatherCategoryRolRepository.findCategoryById("Aseo");
@@ -162,9 +163,6 @@ public class CustomRepositoryImpl implements CustomRepository {
         WeatherCategoryRol backpacker = null;
         WeatherCategoryRol tourist = null;
 
-        if(weatherName.equals("Otoño")){
-            weatherName="Otono";
-        }
         for (String data : rolName) {
             if (data.equals("Viaje con mascotas")) {
                 pets = weatherCategoryRolRepository.findCategoryById("Mascota");
