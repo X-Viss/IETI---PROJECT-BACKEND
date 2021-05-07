@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -18,13 +22,22 @@ public class CreateTripController {
     private TravelService travelService;
 
     @PostMapping(value = "rol")
-    public ResponseEntity<String> postSelectTravelerRol(@RequestBody List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
-        return new ResponseEntity<>(travelService.postTravelerRol(generitToUserRolWeatherOrCategoryList), HttpStatus.CREATED);
+    public ResponseEntity<String> postSelectTravelerRol(@RequestBody List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList, @RequestParam("id") String id) {
+        return new ResponseEntity<>(travelService.postTravelerRol(generitToUserRolWeatherOrCategoryList, id), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "destiny")
     public ResponseEntity<Country> putDestinyByUserRolSelected(@RequestBody Country destiny, @RequestParam("id") String id) {
         travelService.putDestinyByUserRolSelected(destiny, id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "titlehour")
+    public ResponseEntity<Country> putTitleAndHour(@RequestParam("title") String title, @RequestParam("date") String date, @RequestParam("id") String id) throws ParseException {
+        String newDate = date.replace("T"," ");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date toDate = formato.parse(newDate);
+        travelService.putTitleAndHour(title, toDate, id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

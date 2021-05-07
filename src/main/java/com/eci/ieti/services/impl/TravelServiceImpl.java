@@ -9,13 +9,11 @@ import com.eci.ieti.persistence.repository.CustomRepository;
 import com.eci.ieti.services.TravelService;
 import com.eci.ieti.exceptions.TravelException;
 import com.eci.ieti.model.Store;
-import com.eci.ieti.model.Elements;
-import com.eci.ieti.model.Category;
-import com.eci.ieti.model.Travel;
 import com.eci.ieti.persistence.TravelPersistenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -50,8 +48,8 @@ public class TravelServiceImpl implements TravelService {
         travelRepository.updateTravelCategory(newCategory, travelId);
         
     }
-    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList) {
-        return customRepositoryImpl.postTravelerRol(generitToUserRolWeatherOrCategoryList);
+    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList, String id) {
+        return customRepositoryImpl.postTravelerRol(generitToUserRolWeatherOrCategoryList, id);
     }
 
     @Override
@@ -97,6 +95,11 @@ public class TravelServiceImpl implements TravelService {
     @Override
     public void putSeveralByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id) {
         customRepositoryImpl.severalByUserRolSelected(several, id);
+    }
+
+    @Override
+    public void putTitleAndHour(String title, Date date, String id) {
+        customRepositoryImpl.putTitleAndHour(title, date, id);
     }
 
 }

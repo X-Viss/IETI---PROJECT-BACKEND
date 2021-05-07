@@ -72,20 +72,15 @@ public class AuthController {
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping( value = "/auth")
     public Token authenticateClient(@RequestBody AuthenticationRequest authenticationRequest) {
-
         String userName = authenticationRequest.getUserName();
         String password = authenticationRequest.getPassword();
-        System.out.println(userName);
-        System.out.println(password);
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, password));    
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
-        System.out.println("xxx");
         UserDetails loadedUser = userService.loadUserByUsername(userName);
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
         return new Token(jwtlUtils.generateToken(loadedUser));
     }
 
