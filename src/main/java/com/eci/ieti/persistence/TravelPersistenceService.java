@@ -19,8 +19,11 @@ public interface TravelPersistenceService {
      */
     public List<Travel> getUserTravels(String user) throws TravelPersistenceException;
 
+    public void deleteTravel(String id) throws TravelPersistenceException;
+
     public List<Store> getStores(String category);
     public Travel getTravel(String travelId);
     public void updateTravelCategory(List<GeneritToUserRolWeatherOrCategory> newCategory, String travelId);
 
+    public Travel getTravelById(String id);
 }

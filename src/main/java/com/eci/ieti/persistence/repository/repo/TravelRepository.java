@@ -14,4 +14,8 @@ public interface TravelRepository extends MongoRepository<Travel, String> {
     public List<Travel> findByUser(String user);
 
     public Travel findUserRolSelectById(String id);
+
+    public Travel deleteByTravelId(String travelId);
+
+    public Travel getByTravelId(String travelId);
 }

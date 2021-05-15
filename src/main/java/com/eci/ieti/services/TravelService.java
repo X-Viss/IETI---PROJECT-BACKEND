@@ -16,6 +16,8 @@ public interface TravelService {
 
     public List<Travel> getUserTravels(String user) throws TravelException;
 
+    public void deleteTravel (String id) throws TravelException;
+
     public List<Store> getStores(String category);
     
     public Travel getTravel(String travelId);

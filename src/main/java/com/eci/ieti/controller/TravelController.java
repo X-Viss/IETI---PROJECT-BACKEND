@@ -32,4 +32,19 @@ public class TravelController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @DeleteMapping
+    public ResponseEntity<Object> deleteTravel(@RequestParam("id") String id){
+        try {
+            travelService.deleteTravel(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (TravelException e) {
+            if(e.getMessage().equals(TravelException.TRAVEL_NOT_FOUND)){
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            } else if (e.getMessage().equals(TravelException.NOT_AUTHORIZED)){
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+            }
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }

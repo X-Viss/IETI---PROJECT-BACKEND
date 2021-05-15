@@ -11,6 +11,7 @@ import com.eci.ieti.exceptions.TravelException;
 import com.eci.ieti.model.Store;
 import com.eci.ieti.persistence.TravelPersistenceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -33,6 +34,25 @@ public class TravelServiceImpl implements TravelService {
             return travelRepository.getUserTravels(user);
         } catch (TravelPersistenceException e) {
             throw new TravelException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void deleteTravel(String id) throws TravelException {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName();
+        Travel travel = travelRepository.getTravelById(id);
+        if(travel == null){
+            throw new TravelException(TravelException.TRAVEL_NOT_FOUND);
+        }
+        System.out.println("SESSION" + user);
+        System.out.println("MONGO" + travel.getUser());
+        if(!user.equals(travel.getUser())){
+            throw new TravelException(TravelException.NOT_AUTHORIZED);
+        }
+        try {
+            travelRepository.deleteTravel(id);
+        } catch (TravelPersistenceException e) {
+            throw new TravelException(TravelException.TRAVEL_NOT_FOUND, e);
         }
     }
 
