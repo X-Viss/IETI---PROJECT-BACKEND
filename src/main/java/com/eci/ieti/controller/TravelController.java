@@ -24,9 +24,11 @@ public class TravelController {
      * @param user Name of the user
      * @return List of travels of the user
      */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public ResponseEntity<Object> getTravels(@RequestParam("user") String user){
         try {
+            System.out.println(travelService.getUserTravels(user));
             return new ResponseEntity<>(travelService.getUserTravels(user), HttpStatus.OK);
         } catch (TravelException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

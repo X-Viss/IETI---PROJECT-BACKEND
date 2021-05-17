@@ -37,7 +37,7 @@ public class JwtFilterRequest extends OncePerRequestFilter {
     private UserService userService;
 
     private static Logger log = LoggerFactory.getLogger(JwtFilterRequest.class);
-    private static final List<String> EXCLUDE_URL = Arrays.asList("/subs", "/auth");
+    private static final List<String> EXCLUDE_URL = Arrays.asList("/subs", "/auth", "/Locations", "/Trips");
 
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authorizationHeader = request.getHeader("Authorization");
@@ -64,6 +64,7 @@ public class JwtFilterRequest extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        System.out.println(request.getServletPath());
         return EXCLUDE_URL.stream().anyMatch(exclude -> exclude.equalsIgnoreCase(request.getServletPath()));
     }
 }
