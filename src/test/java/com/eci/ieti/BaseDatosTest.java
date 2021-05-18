@@ -1,9 +1,14 @@
 package com.eci.ieti;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import com.eci.ieti.model.Store;
 import com.eci.ieti.model.UserModel;
+import com.eci.ieti.persistence.TravelPersistenceService;
 import com.eci.ieti.persistence.repository.CustomRepository;
+import com.eci.ieti.persistence.repository.repo.StoreRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 
 import org.junit.jupiter.api.Assertions;
@@ -22,6 +27,12 @@ public class BaseDatosTest {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    StoreRepository storeRepository;
+
+    @Autowired
+    TravelPersistenceService travelRepository;
 
     @Test
     public void insertData() {
@@ -62,4 +73,71 @@ public class BaseDatosTest {
     }
     
 
+    @Test
+    public void verifyStoreCategoryNull(){
+        Store store = new Store();
+        List<String> tagCat = new ArrayList<>();
+        tagCat.add("ASEO");
+        tagCat.add("SALUD");
+        tagCat.add("ACCESORIOS");
+        store.setName("Metro");
+        store.setPathImage("imageonred.html");
+        store.setUrl("metro.com");
+        store.setTagCategories(tagCat);
+        storeRepository.save(store);
+
+        System.out.println(storeRepository.findAll());
+        String categoryCompare = "";
+        
+        List<Store> storeResult = travelRepository.getStores(categoryCompare);
+        Assertions.assertEquals(0, storeResult.size());
+    }
+
+    @Test
+    public void verifyStoreCategoryNoExiste(){
+        Store store = new Store();
+        List<String> tagCat = new ArrayList<>();
+        tagCat.add("ASEO");
+        tagCat.add("SALUD");
+        tagCat.add("ACCESORIOS");
+        store.setName("Metro");
+        store.setPathImage("imageonred.html");
+        store.setUrl("metro.com");
+        store.setTagCategories(tagCat);
+        storeRepository.save(store);
+
+        String categoryCompare = "VESTUARIO";
+        
+        List<Store> storeResult = travelRepository.getStores(categoryCompare);
+        Assertions.assertEquals(0, storeResult.size());
+    }
+
+    @Test
+    public void verifyStoreCategoryExiste(){
+        Store store1 = new Store();
+        List<String> tagCat1 = new ArrayList<>();
+        tagCat1.add("ASEO");
+        tagCat1.add("SALUD");
+        tagCat1.add("ACCESORIOS");
+        store1.setName("Metro");
+        store1.setPathImage("imageonred.html");
+        store1.setUrl("metro.com");
+        store1.setTagCategories(tagCat1);
+        storeRepository.save(store1);
+
+        Store store2 = new Store();
+        List<String> tagCat2 = new ArrayList<>();
+        tagCat2.add("ROPA");
+        tagCat2.add("SALUD");
+        store2.setName("Jumbo");
+        store2.setPathImage("imageonred2.html");
+        store2.setUrl("jumbo.com");
+        store2.setTagCategories(tagCat2);
+        storeRepository.save(store2);
+
+        String categoryCompare = "SALUD";
+        
+        List<Store> storeResult = travelRepository.getStores(categoryCompare);
+        Assertions.assertEquals(2, storeResult.size());
+    }
 }
