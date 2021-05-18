@@ -1,15 +1,12 @@
 package com.eci.ieti.controllers;
 
 import com.eci.ieti.configuration.JwtUtils;
-import com.eci.ieti.model.*;
 import com.eci.ieti.persistence.repository.repo.TravelRepository;
-import com.eci.ieti.persistence.repository.repo.WeatherCategoryRolRepository;
 import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import com.eci.ieti.model.Travel;
 import com.eci.ieti.model.UserModel;
-import com.eci.ieti.persistence.TravelPersistenceService;
-import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +14,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MvcResult;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -45,11 +45,24 @@ public class TravelControllerTest {
 
     @Test
     public void getTravelsShouldExist() throws Exception {
+
         UserModel user = new UserModel();
-        user.setUserName("david");
+        user.setUserName("david@test.com");
         user.setPassword("123456joke");
-        userRepository.save(user);
-        mockMvc.perform(get("/api/travels?user=david").header("Authorization", "Bearer "+jwtlUtils.getTokenString()))
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(user);
+        mockMvc.perform((post("/subs")).contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print())
+        .andExpect(status().isOk());
+
+        MvcResult result = mockMvc.perform((post("/auth")).contentType(MediaType.APPLICATION_JSON).content(json))
+                .andExpect(status().isOk()).andReturn();
+
+
+        JsonNode root = mapper.readTree(result.getResponse().getContentAsString());
+        String token = root.path("accessToken").asText();
+        System.out.println(token);
+
+        mockMvc.perform(get("/api/travels?user="+user.getUserName()).header("Authorization", "Bearer "+token))
         .andDo(print()).andExpect(status().isOk());
 
 

@@ -7,6 +7,8 @@ public class TravelPersistenceException extends Exception{
      */
     private static final long serialVersionUID = 1L;
     public static final String USER_NOT_FOUND = "THE USER HAS NOT BEEN FOUND";
+    public static final String TRAVEL_NOT_FOUND = "THE TRAVEL HAS NOT BEEN FOUND";
+
 
     public TravelPersistenceException(String message){
         super(message);

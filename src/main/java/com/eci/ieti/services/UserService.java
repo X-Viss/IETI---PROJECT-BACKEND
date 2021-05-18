@@ -20,12 +20,15 @@ public class UserService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         UserModel foundedUser = userRepository.findByUserName(username);
         if (foundedUser == null){
             return null;
         }
+
         String name = foundedUser.getUserName();
         String pws = foundedUser.getPassword();
+
         return new User(name, pws, new ArrayList<>());
     }
     

@@ -15,6 +15,7 @@ import com.eci.ieti.persistence.repository.repo.StoreRepository;
 import com.eci.ieti.persistence.repository.repo.TravelRepository;
 import com.eci.ieti.persistence.repository.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -56,6 +57,15 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
     }
 
     @Override
+    public void deleteTravel(String id) throws TravelPersistenceException {
+        Travel travel = travelRepository.deleteByTravelId(id);
+        if(travel == null){
+            throw new TravelPersistenceException(TravelPersistenceException.TRAVEL_NOT_FOUND);
+        }
+        System.out.println(travel.getTravelId());
+    }
+
+    @Override
     public List<Store> getStores(String category){
         
         List<Store> storeTemp = storeRepository.findAll();
@@ -79,5 +89,10 @@ public class TravelPersistenceServiceImpl implements TravelPersistenceService {
         Travel travel = travelRepository.findUserRolSelectById(travelId);
         travel.setSeveralList(newCategory);
         travelRepository.save(travel);
+    }
+
+    @Override
+    public Travel getTravelById(String id) {
+        return travelRepository.getByTravelId(id);
     }
 }

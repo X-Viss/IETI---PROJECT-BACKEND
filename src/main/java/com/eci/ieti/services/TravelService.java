@@ -2,7 +2,6 @@ package com.eci.ieti.services;
 
 import com.eci.ieti.exceptions.TravelException;
 import com.eci.ieti.model.Store;
-import com.eci.ieti.model.Category;
 import com.eci.ieti.model.Country;
 import com.eci.ieti.model.ListCategories;
 import com.eci.ieti.model.Travel;
@@ -11,6 +10,7 @@ import com.eci.ieti.model.GeneritToUserRolWeatherOrCategory;
 import com.eci.ieti.model.Travel;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,12 +20,14 @@ public interface TravelService {
 
     public List<Question> getFAQ();
     
+    public void deleteTravel (String id) throws TravelException;
+
     public List<Store> getStores(String category);
     
     public Travel getTravel(String travelId);
     public void updateTravelCategory(List<GeneritToUserRolWeatherOrCategory> newCategory,String travelId);
 
-    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList);
+    public String postTravelerRol(List<GeneritToUserRolWeatherOrCategory> generitToUserRolWeatherOrCategoryList, String id);
 
     public void putDestinyByUserRolSelected(Country destiny, String id);
 
@@ -44,4 +46,6 @@ public interface TravelService {
     public void putClothesByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> clothes, String id);
 
     public void putSeveralByUserRolSelected(List<GeneritToUserRolWeatherOrCategory> several, String id);
+
+    void putTitleAndHour(String title, Date date, String id);
 }

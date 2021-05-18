@@ -12,11 +12,14 @@ import java.util.List;
 public class LocationController {
   @Autowired LocationServices locationServices;
 
+  @CrossOrigin(origins = "*")
   @GetMapping
   public List<Place> locationList() {
     return locationServices.getAllLocations();
   }
 
+
+  @CrossOrigin(origins = "*")
   @GetMapping("/{namesite}")
   public Place getLocation(@PathVariable String namesite) {
     return locationServices.getFindByLocation(namesite);

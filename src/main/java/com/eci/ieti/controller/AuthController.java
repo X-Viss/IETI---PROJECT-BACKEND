@@ -61,7 +61,7 @@ public class AuthController {
         user.setCountry(country);
         user.setPhone(phone);
         user.setBirth(birth);
-        if((userRepository.findByUserName(userName)==null || userName == null) && Boolean.TRUE.equals(b)){
+        if( userName != null && password != null && Boolean.TRUE.equals(b)){
             userRepository.save(user);
         } else{
             return ResponseEntity.badRequest().body(new AutenticationResponse("Error exists client subscription"));
@@ -74,15 +74,13 @@ public class AuthController {
     public Token authenticateClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
         String password = authenticationRequest.getPassword();
-
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, password));    
         } catch (Exception e) {
+            e.printStackTrace();
             throw e;
         }
-
         UserDetails loadedUser = userService.loadUserByUsername(userName);
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
         return new Token(jwtlUtils.generateToken(loadedUser));
     }
 
