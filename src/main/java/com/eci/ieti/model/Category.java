@@ -5,6 +5,7 @@ import java.util.List;
 public class Category {
 
     private String title;
+
     private List<Elements> elementsList;
 
     public String getTitle() {
