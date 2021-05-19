@@ -22,24 +22,29 @@ public class BaseController {
     @Autowired
     private TravelService travelService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/faq")
     public List<Question> getFAQ(){
 
         return travelService.getFAQ();
     }
     
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/stores")
     public List<Store> getStores(@RequestParam("category") String category){
         System.out.println(category);
         return travelService.getStores(category);
         
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/travel")
     public Travel getTravel(@RequestParam("travelId") String travelId){
         return travelService.getTravel(travelId);
         
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping(value = "category/newCategory")
     public ResponseEntity<GeneritToUserRolWeatherOrCategory> putNewCategory(@RequestBody List<GeneritToUserRolWeatherOrCategory> others, @RequestParam("travelId") String travelId) {
         travelService.updateTravelCategory(others, travelId);
