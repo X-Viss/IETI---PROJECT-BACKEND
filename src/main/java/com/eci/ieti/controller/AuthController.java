@@ -12,6 +12,7 @@ import com.eci.ieti.persistence.repository.repo.UserRepository;
 import com.eci.ieti.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,6 +39,14 @@ public class AuthController {
 
     @Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping( value = "/user")
+    public ResponseEntity<UserModel> dataUser() {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserModel user = userRepository.findByUserName(name);
+        return new ResponseEntity<>(user,HttpStatus.OK);
+    }
 
     @GetMapping( value = "/dashboard")
     public ResponseEntity<AutenticationResponse> testingToken () {
