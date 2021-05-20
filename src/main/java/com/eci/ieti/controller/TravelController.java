@@ -33,6 +33,7 @@ public class TravelController {
         }
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping
     public ResponseEntity<Object> deleteTravel(@RequestParam("id") String id){
         try {

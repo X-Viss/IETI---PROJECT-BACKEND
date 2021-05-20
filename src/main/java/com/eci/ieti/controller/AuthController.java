@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
 
     @Autowired
@@ -48,12 +49,13 @@ public class AuthController {
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping( value = "/dashboard")
     public ResponseEntity<AutenticationResponse> testingToken () {
         return ResponseEntity.ok(new AutenticationResponse(SecurityContextHolder.getContext().getAuthentication().getName()));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping( value = "/subs")
     public ResponseEntity<AutenticationResponse> subcribeClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();
@@ -78,7 +80,7 @@ public class AuthController {
         return ResponseEntity.ok(new AutenticationResponse("Succesful subscription for client "+ userName));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping( value = "/auth")
     public Token authenticateClient(@RequestBody AuthenticationRequest authenticationRequest) {
         String userName = authenticationRequest.getUserName();

@@ -8,17 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/Trips")
 public class TripController {
   @Autowired TripServices tripServices;
 
-  @CrossOrigin(origins = "*")
+  @CrossOrigin(origins = "*", allowedHeaders = "*")
   @GetMapping
   public List<Trip> tripsList() {
     return tripServices.getAllTrips();
   }
 
-  @CrossOrigin(origins = "*")
+  @CrossOrigin(origins = "*", allowedHeaders = "*")
   @GetMapping("/{nametrip}")
   public List<Trip> getTypeTrip(@PathVariable String nametrip) {
     return tripServices.getFindByTrip(nametrip);
